@@ -12,3 +12,25 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+
+model User {
+  id String @id @default(uuid())
+  name String @db.VarChar(60)
+  lastname String @db.VarChar(100)
+  email String 
+  password String @db.VarChar(100)
+
+  @@map("users")
+}
+
+
+model Product {
+  id String @id @default(uuid())
+  name String @db.VarChar(200)
+  price Decimal @db.Decimal(8, 2)
+  description String
+  image String
+
+  @@map("products")
+}
