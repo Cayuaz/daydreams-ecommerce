@@ -7,4 +7,11 @@ const userSchema = z.object({
   password: z.string().min(5).max(200),
 });
 
-export { userSchema };
+const userLoginSchema = userSchema.pick({
+  email: true,
+  password: true,
+});
+
+type UserLoginSchema = z.infer<typeof userLoginSchema>;
+
+export { userSchema, userLoginSchema, type UserLoginSchema };

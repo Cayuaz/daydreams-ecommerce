@@ -10,16 +10,12 @@ export class RegisterUseCase {
     //Verifica se os dados para a criação do novo usuário estão corretos
     const { success, data } = userSchema.safeParse(userData);
 
-    if (!success) {
-      throw new Error("Dados incorretos.");
-    }
+    if (!success) throw new Error("Dados incompletos ou incorretos.");
 
     //Verifica se existe um usuário com o email utilizado
     const user = await this.repository.getUserByEmail(data.email);
 
-    if (user) {
-      throw new Error("O email em questão já está sendo utilizado.");
-    }
+    if (user) throw new Error("O email em questão já está sendo utilizado.");
 
     //Criptografa a senha do usuário
     const encryptedPassword = await bcrypt.hash(data.password, 12);

@@ -7,3 +7,13 @@ Content-Type: application/json
  "email": "pedrolucas6@gmail.com",
  "password": "teste123"
 }
+
+###
+
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+ "email": "pedrolucas6@gmail.com",
+ "password": "teste123"
+}
