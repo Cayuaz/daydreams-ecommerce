@@ -29,7 +29,7 @@ export class RegisterUseCase {
     //Se não acontecer nenhum erro, cria o token e coloca alguns dados do usuário nele
     const token = jwt.sign(
       { id: newUser.id, name: newUser.name, lastname: newUser.lastname },
-      process.env.DB_SECRET
+      process.env.SECRET
     );
 
     return { user: newUser, token };
