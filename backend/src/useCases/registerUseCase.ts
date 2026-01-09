@@ -28,6 +28,6 @@ export class RegisterUseCase {
       process.env.SECRET
     );
 
-    return { user: newUser, token };
+    return { userId: newUser.id, token };
   }
 }

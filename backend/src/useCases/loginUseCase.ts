@@ -27,13 +27,13 @@ export class LoginUseCase {
     //Gera o token
     const token = jwt.sign(
       {
-        id: userDb.props.name,
+        id: userDb.props.id,
         name: userDb.props.name,
         lastname: userDb.props.lastname,
       },
       process.env.SECRET
     );
 
-    return { token };
+    return { userId: userDb.props.id, token };
   }
 }
