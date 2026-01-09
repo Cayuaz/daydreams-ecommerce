@@ -4,7 +4,7 @@ import type { GetUserUseCase } from "../useCases/getUserUseCase.js";
 export class GetUserController {
   constructor(private getUserUseCase: GetUserUseCase) {}
 
-  async handle(req: Request, res: Response) {
+  handle = async (req: Request, res: Response) => {
     const id = req.body.id;
 
     //Verifica se o ID existe
@@ -21,5 +21,5 @@ export class GetUserController {
     }
 
     return res.json(user);
-  }
+  };
 }
