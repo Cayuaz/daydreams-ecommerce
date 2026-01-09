@@ -14,6 +14,6 @@ const getUserController = new GetUserController(getUserUseCase);
 
 const router = Router();
 
-router.get("/", getUserController.handle);
+router.get("/:id", getUserController.handle);
 
 export default router;

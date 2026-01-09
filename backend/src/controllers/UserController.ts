@@ -5,7 +5,7 @@ export class GetUserController {
   constructor(private getUserUseCase: GetUserUseCase) {}
 
   handle = async (req: Request, res: Response) => {
-    const id = req.body.id;
+    const id = req.params.id;
 
     //Verifica se o ID existe
     if (!id) {
