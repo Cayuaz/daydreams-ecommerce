@@ -1,5 +1,5 @@
 import { User } from "../entities/User.js";
-import type { IUserRepository } from "./IUserRepository.js";
+import type { IUserRepository, NewUser } from "./IUserRepository.js";
 import { prisma } from "../lib/prisma.js";
 
 export class UserRepository implements IUserRepository {
@@ -7,7 +7,7 @@ export class UserRepository implements IUserRepository {
   async getUser(userId: string) {
     return await prisma.user.findUnique({
       where: { id: userId },
-      select: { name: true, lastname: true, email: true },
+      select: { id: true, name: true, lastname: true, email: true },
     });
   }
   //Busca um usuário pelo email
@@ -19,5 +19,12 @@ export class UserRepository implements IUserRepository {
     if (!userData) return null;
 
     return new User(userData);
+  }
+  //Adiciona um novo usuário no banco de dados
+  async createUser(user: NewUser) {
+    return await prisma.user.create({
+      data: user,
+      select: { id: true, name: true, lastname: true, email: true },
+    });
   }
 }
