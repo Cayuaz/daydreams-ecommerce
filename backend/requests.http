@@ -22,3 +22,7 @@ Content-Type: application/json
 
 GET http://localhost:3000/users/e2532ce7-d6bc-4d27-8e6f-c91ff3447b46
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyNTMyY2U3LWQ2YmMtNGQyNy04ZTZmLWM5MWZmMzQ0N2I0NiIsIm5hbWUiOiJQZWRybyIsImxhc3RuYW1lIjoiTHVjYXMiLCJpYXQiOjE3Njc5OTQ5NzF9.-cXQ68Ne4fx2sYrmDXfBO8BcahhBKtHtzImQ2qN6DNA
+
+###
+
+GET http://localhost:3000/products?search=&page=1
