@@ -5,6 +5,7 @@ export const isLogged = (req: Request, res: Response, next: NextFunction) => {
   const header = req.headers["authorization"];
   const token = header?.split(" ")[1];
 
+  //Verifica se o token existe
   if (!token) {
     return res
       .status(401)
@@ -12,6 +13,7 @@ export const isLogged = (req: Request, res: Response, next: NextFunction) => {
   }
 
   try {
+    //Verifica se o token é válido
     jwt.verify(token, process.env.SECRET);
     next();
   } catch (error) {

@@ -2,6 +2,7 @@ import { Router } from "express";
 import { GetUserController } from "../controllers/UserController.js";
 import { GetUserUseCase } from "../useCases/getUserUseCase.js";
 import { UserRepository } from "../repositories/UserRepository.js";
+import { isLogged } from "../middlewares/login.js";
 
 //User repository
 const userRepository = new UserRepository();
@@ -14,6 +15,6 @@ const getUserController = new GetUserController(getUserUseCase);
 
 const router = Router();
 
-router.get("/:id", getUserController.handle);
+router.get("/:id", isLogged, getUserController.handle);
 
 export default router;

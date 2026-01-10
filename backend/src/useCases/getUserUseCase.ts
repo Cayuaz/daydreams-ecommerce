@@ -1,3 +1,4 @@
+import { AppError } from "../middlewares/errors.js";
 import type { IUserRepository } from "../repositories/IUserRepository.js";
 
 export class GetUserUseCase {
@@ -5,7 +6,7 @@ export class GetUserUseCase {
   async execute(id: string) {
     const user = await this.repository.getUser(id);
 
-    if (!user) throw new Error("Usuário não encontrado.");
+    if (!user) throw new AppError("Usuário não encontrado.", 404);
 
     return user;
   }

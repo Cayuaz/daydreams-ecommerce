@@ -9,7 +9,7 @@ export class GetUserController {
 
     //Verifica se o ID existe
     if (!id) {
-      return res.status(400).json({ error: "ID inválido ou inexistente." });
+      return res.status(400).json({ message: "ID inválido ou inexistente." });
     }
 
     //Chama o método do getUserUseCase

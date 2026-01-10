@@ -1,3 +1,4 @@
+import { AppError } from "../middlewares/errors.js";
 import type { UserRepository } from "../repositories/UserRepository.js";
 import { userLoginSchema } from "../validations/schemas.js";
 import bcrypt from "bcrypt";
@@ -9,12 +10,12 @@ export class LoginUseCase {
     //Verifica se os dados para login estão corretos
     const { success, data } = userLoginSchema.safeParse(userLogin);
 
-    if (!success) throw new Error("Dados incompletos ou incorretos.");
+    if (!success) throw new AppError("Dados incompletos ou incorretos.");
 
     //Utiliza o email do login para pegar os dados do usuário
     const userDb = await this.repository.getUserByEmail(data.email);
 
-    if (!userDb) throw new Error("Usuário não encontrado.");
+    if (!userDb) throw new AppError("Usuário não encontrado.", 404);
 
     //Compara a senha do login com a senha do banco de dados
     const isPasswordCorrect = await bcrypt.compare(
@@ -22,7 +23,8 @@ export class LoginUseCase {
       userDb.props.password
     );
 
-    if (!isPasswordCorrect) throw new Error("Senha incorreta.");
+    if (!isPasswordCorrect)
+      throw new AppError("Senha incorreta ou inválida.", 401);
 
     //Gera o token
     const token = jwt.sign(
