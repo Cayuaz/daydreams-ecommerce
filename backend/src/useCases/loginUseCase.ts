@@ -1,11 +1,11 @@
+import type { IUserRepository } from "../repositories/IUserRepository.js";
 import { AppError } from "../middlewares/errors.js";
-import type { UserRepository } from "../repositories/UserRepository.js";
 import { userLoginSchema } from "../validations/schemas.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 export class LoginUseCase {
-  constructor(private repository: UserRepository) {}
+  constructor(private repository: IUserRepository) {}
   async execute(userLogin: unknown) {
     //Verifica se os dados para login estão corretos
     const { success, data } = userLoginSchema.safeParse(userLogin);

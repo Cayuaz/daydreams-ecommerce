@@ -15,11 +15,6 @@ export class GetUserController {
     //Chama o método do getUserUseCase
     const user = await this.getUserUseCase.execute(id);
 
-    // //Verifica se o usuário foi retornado com sucesso
-    // if (!user) {
-    //   return res.status(404).json({ error: "Usuário não encontrado." });
-    // }
-
     return res.json(user);
   };
 }

@@ -1,5 +1,5 @@
-import { AppError } from "../middlewares/errors.js";
 import type { IUserRepository } from "../repositories/IUserRepository.js";
+import { AppError } from "../middlewares/errors.js";
 
 export class GetUserUseCase {
   constructor(private repository: IUserRepository) {}

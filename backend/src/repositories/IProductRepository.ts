@@ -3,9 +3,10 @@ import type { Product } from "../entities/Product.js";
 type ProductsAndTotal = { products: Product[]; total: number };
 
 export interface IProductRepository {
-  GetProducts: (
+  getProducts: (
     search: string,
     pageSize: number,
     currentPage: number
   ) => Promise<ProductsAndTotal>;
+  getProduct: (id: string) => Promise<Product | null>;
 }

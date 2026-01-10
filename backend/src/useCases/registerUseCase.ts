@@ -1,11 +1,11 @@
+import type { IUserRepository } from "../repositories/IUserRepository.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import type { UserRepository } from "../repositories/UserRepository.js";
 import { userSchema } from "../validations/schemas.js";
 import { AppError } from "../middlewares/errors.js";
 
 export class RegisterUseCase {
-  constructor(private repository: UserRepository) {}
+  constructor(private repository: IUserRepository) {}
 
   async execute(userData: unknown) {
     //Verifica se os dados para a criação do novo usuário estão corretos
