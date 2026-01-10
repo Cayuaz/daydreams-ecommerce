@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
 import type { GetProductsUseCase } from "../useCases/getProductsUseCase.js";
-import type { GetProductUseCase } from "../useCases/getProduct.js";
+import type { GetProductUseCase } from "../useCases/getProductUseCase.js";
 
 export class GetProductsController {
   constructor(private getProductsUseCase: GetProductsUseCase) {}
@@ -20,7 +20,16 @@ export class GetProductsController {
 export class GetProductController {
   constructor(private getProductUseCase: GetProductUseCase) {}
 
-  handle = async (id: string) => {
-    return await this.getProductUseCase.execute(id);
+  handle = async (req: Request, res: Response) => {
+    const id = req.params.id;
+
+    //Verifica se o ID existe
+    if (!id) {
+      return res.status(400).json({ message: "ID inválido ou inexistente." });
+    }
+
+    const product = await this.getProductUseCase.execute(id);
+
+    return res.json(product);
   };
 }

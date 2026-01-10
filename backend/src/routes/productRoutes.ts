@@ -1,8 +1,11 @@
 import { Router } from "express";
-import { globalErrors } from "../middlewares/errors.js";
 import { ProductRepository } from "../repositories/ProductRepository.js";
 import { GetProductsUseCase } from "../useCases/getProductsUseCase.js";
-import { GetProductsController } from "../controllers/ProductController.js";
+import {
+  GetProductController,
+  GetProductsController,
+} from "../controllers/ProductController.js";
+import { GetProductUseCase } from "../useCases/getProductUseCase.js";
 
 const router = Router();
 
@@ -11,9 +14,15 @@ const repository = new ProductRepository();
 
 // Product routes setup
 
+//Get products
 const getProductsUseCase = new GetProductsUseCase(repository);
 const getProductsController = new GetProductsController(getProductsUseCase);
 
-router.get("/", globalErrors, getProductsController.handle);
+//Get product
+const getProductUseCase = new GetProductUseCase(repository);
+const getProductController = new GetProductController(getProductUseCase);
+
+router.get("/", getProductsController.handle);
+router.get("/:id", getProductController.handle);
 
 export default router;

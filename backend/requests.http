@@ -25,4 +25,8 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyNTMyY2U3L
 
 ###
 
-GET http://localhost:3000/products?search=&page=1
+GET http://localhost:3000/products?search=""&page=1
+
+###
+
+GET http://localhost:3000/products/dd5dadf7-16ce-4e52-bbfd-efb036073e7
