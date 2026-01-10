@@ -1,0 +1,209 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Daydreams API",
+    "description": "Documentação da API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Servidor Local"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "id": {
+        "type": "string"
+      },
+      "login": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "pedrosantos@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "format": "password",
+            "example": "123456"
+          }
+        }
+      },
+      "register": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Ana"
+          },
+          "lastname": {
+            "type": "string",
+            "example": "Silva"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "anasilva@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "format": "password",
+            "example": "123456"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/users/{id}": {
+      "get": {
+        "tags": ["Usuários"],
+        "summary": "Busca um usuário pelo ID",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID único do usuário",
+            "schema": {
+              "$ref": "#/components/schemas/id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário encontrado com sucesso"
+          },
+          "401": {
+            "description": "Acesso negado. Token inexistente."
+          },
+          "404": {
+            "description": "Usuário não encontrado"
+          },
+          "500": {
+            "description": "Erro no servidor. Por favor tente novamente em outro momento."
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": ["Autenticação"],
+        "summary": "Faz o login de um usuário",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/login"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Usuário logado com sucesso"
+          },
+          "400": {
+            "description": "Dados incompletos ou incorretos."
+          },
+          "401": {
+            "description": "Senha incorreta ou inválida"
+          },
+          "404": {
+            "description": "Usuário não encontrado"
+          },
+          "500": {
+            "description": "Erro no servidor. Por favor tente novamente em outro momento."
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": ["Autenticação"],
+        "summary": "Faz o registro de um novo usuário",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/register"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Usuário registrado com sucesso"
+          },
+          "400": {
+            "description": "Dados incompletos ou incorretos."
+          },
+          "409": {
+            "description": "O email em questão já sendo utilizado."
+          },
+          "500": {
+            "description": "Erro no servidor. Por favor tente novamente em outro momento."
+          }
+        }
+      }
+    },
+    "/products": {
+      "get": {
+        "tags": ["Produtos"],
+        "summary": "retorna os produtos do banco de dados",
+        "responses": {
+          "200": {
+            "description": "Produto retornado com sucesso"
+          },
+          "500": {
+            "description": "Erro no servidor. Por favor tente novamente em outro momento."
+          }
+        }
+      }
+    },
+    "/products/{id}": {
+      "get": {
+        "tags": ["Produtos"],
+        "summary": "Busca um produto pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": "true",
+            "description": "ID único do produto",
+            "schema": {
+              "$ref": "#/components/schemas/id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Produto retornado com sucesso"
+          },
+          "404": {
+            "description": "Usuário não encontrado"
+          },
+          "500": {
+            "description": "Erro no servidor. Por favor tente novamente em outro momento."
+          }
+        }
+      }
+    }
+  }
+}
