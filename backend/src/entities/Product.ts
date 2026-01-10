@@ -1,6 +1,7 @@
 import { Decimal } from "decimal.js";
 
 interface ProductProps {
+  id: string;
   name: string;
   price: Decimal;
   description: string;
