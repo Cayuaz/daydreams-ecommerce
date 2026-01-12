@@ -3,6 +3,7 @@ node_modules/
 .npm/
 .eslintcache/
 *.tsbuildinfo
+.vite/
 
 # --- Variáveis de Ambiente e Banco ---
 .env
