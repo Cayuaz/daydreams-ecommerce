@@ -3,7 +3,7 @@ import HeaderMobile from "./HeaderMobile";
 
 export const Header = () => {
   return (
-    <header className="flex justify-center items-center bg-[#222224] text-white w-full">
+    <header className="bg-[#222224] text-white w-full sticky top-0">
       <HeaderMobile />
       <HeaderDesktop />
     </header>
