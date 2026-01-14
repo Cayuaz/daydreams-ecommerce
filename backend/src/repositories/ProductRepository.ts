@@ -11,6 +11,13 @@ export class ProductRepository implements IProductRepository {
       //Se pageNumber for 3, 3 - 1 = 2, 2 * 10 = 20, ou seja se cada página mostra 10 itens, na 3 ele pula os últimos 20 itens
       skip: (currentPage - 1) * pageSize,
       take: pageSize,
+      select: {
+        id: true,
+        name: true,
+        price: true,
+        description: true,
+        imageUrl: true,
+      },
     });
     const total = await prisma.product.count({
       where: { name: { contains: search, mode: "insensitive" } },
@@ -29,5 +36,22 @@ export class ProductRepository implements IProductRepository {
     if (!productData) return null;
 
     return new Product(productData);
+  }
+  //Busca os produtos em destaque
+  async getFeaturedProducts() {
+    const featuredProducts = await prisma.product.findMany({
+      where: { isFeatured: true },
+      select: {
+        id: true,
+        name: true,
+        price: true,
+        description: true,
+        imageUrl: true,
+      },
+    });
+
+    return featuredProducts.map(
+      (featuredProduct) => new Product(featuredProduct)
+    );
   }
 }

@@ -30,3 +30,7 @@ GET http://localhost:3000/products?search=""&page=1
 ###
 
 GET http://localhost:3000/products/dd5dadf7-16ce-4e52-bbfd-efb036073e7
+
+###
+
+GET http://localhost:3000/products/featured
