@@ -5,7 +5,7 @@ interface ProductProps {
   name: string;
   price: Decimal;
   description: string;
-  image: string;
+  imageUrl: string;
 }
 
 export class Product {

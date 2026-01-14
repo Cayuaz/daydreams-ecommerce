@@ -1,6 +1,7 @@
 import type { Request, Response } from "express";
 import type { GetProductsUseCase } from "../useCases/getProductsUseCase.js";
 import type { GetProductUseCase } from "../useCases/getProductUseCase.js";
+import type { GetFeaturedProductsUseCase } from "../useCases/getFeaturedProductsUseCase.js";
 
 export class GetProductsController {
   constructor(private getProductsUseCase: GetProductsUseCase) {}
@@ -31,5 +32,15 @@ export class GetProductController {
     const product = await this.getProductUseCase.execute(id);
 
     return res.json(product);
+  };
+}
+
+export class GetFeaturedProductsController {
+  constructor(private getFeaturedProducts: GetFeaturedProductsUseCase) {}
+
+  handle = async (req: Request, res: Response) => {
+    const products = await this.getFeaturedProducts.execute();
+
+    res.json(products);
   };
 }

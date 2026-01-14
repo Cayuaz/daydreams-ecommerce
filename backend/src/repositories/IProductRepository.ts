@@ -9,4 +9,5 @@ export interface IProductRepository {
     currentPage: number
   ) => Promise<ProductsAndTotal>;
   getProduct: (id: string) => Promise<Product | null>;
+  getFeaturedProducts: () => Promise<Product[]>;
 }

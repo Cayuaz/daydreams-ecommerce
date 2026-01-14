@@ -208,6 +208,20 @@
           }
         }
       }
+    },
+    "/products/featured": {
+      "get": {
+        "tags": ["Produtos"],
+        "summary": "Busca os produtos de destaque",
+        "responses": {
+          "200": {
+            "description": "Produto retornado com sucesso"
+          },
+          "500": {
+            "description": "Erro no servidor. Por favor tente novamente em outro momento."
+          }
+        }
+      }
     }
   }
 }
