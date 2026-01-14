@@ -7,7 +7,7 @@ const HeaderDesktop = () => {
       {/*COntainer com a logo, barra de pesquisa e ícones */}
       <div className="grid grid-cols-[1fr_2fr_1fr] gap-6 items-center mx-auto w-full">
         <img
-          src="../../../public/logo.svg"
+          src="../../../logo.svg"
           alt="Daydreams logo"
           className="w-40 h-30"
         />

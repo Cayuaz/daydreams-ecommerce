@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 const Navbar = () => {
-  const [rotate, setRotate] = useState(true);
+  const [rotate, setRotate] = useState(false);
 
   const handleRotate = () => {
     return rotate ? setRotate(false) : setRotate(true);

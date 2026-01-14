@@ -9,9 +9,7 @@ const ProductsMenu = () => {
   return (
     <Accordion type="single" collapsible>
       <AccordionItem value="item-1 text-lg">
-        <AccordionTrigger className="hover:text-[#974947]">
-          Produtos
-        </AccordionTrigger>
+        <AccordionTrigger>Produtos</AccordionTrigger>
         <AccordionContent>All</AccordionContent>
         <AccordionContent>Camisetas</AccordionContent>
         <AccordionContent>Calças</AccordionContent>
