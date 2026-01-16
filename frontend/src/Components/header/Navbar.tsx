@@ -71,10 +71,10 @@ const Navbar = () => {
               Produtos
             </NavLink>
             <ChevronDown
-              onClick={handleRotate}
               className={`transition-transform, duration-300 ease-in-out, ${
                 rotate ? "rotate-180" : "rotate-0"
               } group-hover:text-[#974947] size-5`}
+              onClick={handleRotate}
             />
           </div>
 
