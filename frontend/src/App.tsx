@@ -1,16 +1,16 @@
-import { Outlet, useNavigation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import "./App.css";
 import { Header } from "./Components/header/Header";
 import { Footer } from "./Components/Footer";
 
 function App() {
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
 
   return (
     <div className="min-h-screen grid grid-cols-1 grid-rows-[auto_1fr_auto] text-center items-center">
       <Header />
       <main className="h-full border-2 border-black">
-        {navigation.state === "loading" && <p>Carregando...</p>}
+        {/* {navigation.state === "loading" && <p>Carregando...</p>} */}
         <Outlet />
       </main>
       <Footer />

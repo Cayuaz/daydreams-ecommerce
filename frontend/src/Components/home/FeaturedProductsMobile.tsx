@@ -7,7 +7,7 @@ type FeaturedProductsMobileProps = {
 
 const FeaturedProductsMobile = ({ products }: FeaturedProductsMobileProps) => {
   return (
-    <div className="sm:hidden justify-center items-center grid grid-cols-2 mt-6 mb-18 gap-2 ">
+    <div className="lg:hidden justify-center items-center grid grid-cols-2 mt-6 mb-18 gap-2 ">
       {products.map((product) => (
         <div
           className="flex flex-col items-center gap-2 flex-wrap"
@@ -16,9 +16,9 @@ const FeaturedProductsMobile = ({ products }: FeaturedProductsMobileProps) => {
           <img
             src={product.imageUrl}
             alt="Produto de destaque"
-            className="w-4/6"
+            className="w-4/6 sm:w-3/6 hover:scale-105 transition-transform"
           />
-          <span className="text-sm">{product.name}</span>
+          <span className="text-sm sm:text-base">{product.name}</span>
           <span className="text-sm font-bold">{formPrice(product.price)}</span>
         </div>
       ))}

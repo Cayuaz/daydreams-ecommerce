@@ -2,7 +2,7 @@ import { Truck, CreditCard, Banknote } from "lucide-react";
 
 const Payments = () => {
   return (
-    <div className="grid gap-6 grid-rows-2 grid-cols-2 sm:grid-cols-3 sm:grid-rows-1 sm:gap-1 items-center justify-center px-8 mb-20 mx-auto w-4/5">
+    <div className="grid gap-6 grid-rows-2 grid-cols-2 sm:grid-cols-3 sm:grid-rows-1 sm:gap-1 items-center justify-center px-8 mb-20 mx-auto w-full lg:w-5/6 lg:mb-40">
       <div className="flex flex-col items-center col-span-2 sm:col-span-1 gap-2">
         <Truck className="size-15" />
         <span className="font-semibold">Frete grátis</span>
