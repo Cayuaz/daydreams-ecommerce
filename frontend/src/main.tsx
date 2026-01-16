@@ -14,6 +14,10 @@ const router = createBrowserRouter([
         lazy: () => import("./routes/Home.tsx"),
       },
       {
+        path: "/about",
+        lazy: () => import("./routes/About.tsx"),
+      },
+      {
         path: "/products",
         lazy: () => import("./routes/Products.tsx"),
       },

@@ -46,7 +46,7 @@ const Navbar = () => {
         </li>
         <li className="hover:text-[#974947]">
           <NavLink
-            to={"/sobre"}
+            to={"/About"}
             className={({ isActive }) =>
               `${
                 isActive ? "underline" : "text-white"
