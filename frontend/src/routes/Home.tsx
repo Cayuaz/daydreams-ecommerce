@@ -2,6 +2,7 @@ import Banner from "@/Components/home/Banner";
 import FeaturedProductsDesktop from "@/Components/home/FeaturedProductsDesktop";
 import FeaturedProductsMobile from "@/Components/home/FeaturedProductsMobile";
 import Payments from "@/Components/home/Payments";
+import UnavailableProducts from "@/Components/UnavailableProducts";
 import { axiosInstance } from "@/services/axios";
 import {
   productArraySchema,
@@ -10,18 +11,25 @@ import {
 import { Suspense } from "react";
 import { Await, useLoaderData } from "react-router-dom";
 
+//
 export const loader = () => {
-  const productPromise = axiosInstance.get("/products/featured").then((res) => {
-    console.log(res);
-    const { success, data } = productArraySchema.safeParse(res);
+  const productPromise = axiosInstance
+    .get("/products/featured")
+    .then((res) => {
+      console.log(res);
+      const { success, data } = productArraySchema.safeParse(res);
 
-    if (!success) {
-      console.log("Falha na verificação dos produtos!");
+      if (!success) {
+        console.log("Falha na verificação dos produtos!");
+        return [];
+      }
+
+      return data;
+    })
+    .catch((err) => {
+      console.log(err);
       return [];
-    }
-
-    return data;
-  });
+    });
 
   return { products: productPromise };
 };
@@ -40,12 +48,13 @@ export const Component = () => {
         <Await resolve={products}>
           {(resolvedProducts) => (
             <>
-              {resolvedProducts && (
+              {resolvedProducts.length > 0 && (
                 <FeaturedProductsMobile products={resolvedProducts} />
               )}
-              {resolvedProducts && (
+              {resolvedProducts.length > 0 && (
                 <FeaturedProductsDesktop products={resolvedProducts} />
               )}
+              {resolvedProducts.length === 0 && <UnavailableProducts />}
             </>
           )}
         </Await>
