@@ -7,28 +7,50 @@ import {
   productArraySchema,
   type ProductArraySchema,
 } from "@/validations/schemas";
-import { useLoaderData } from "react-router-dom";
+import { Suspense } from "react";
+import { Await, useLoaderData } from "react-router-dom";
 
-export const loader = async () => {
-  const productData = await axiosInstance.get("/products/featured");
+export const loader = () => {
+  const productPromise = axiosInstance.get("/products/featured").then((res) => {
+    console.log(res);
+    const { success, data } = productArraySchema.safeParse(res);
 
-  const { success, data } = productArraySchema.safeParse(productData);
+    if (!success) {
+      console.log("Falha na verificação dos produtos!");
+      return [];
+    }
 
-  if (!success) return [];
+    return data;
+  });
 
-  return data;
+  return { products: productPromise };
 };
 
 export const Component = () => {
-  const products = useLoaderData() as ProductArraySchema;
+  const { products } = useLoaderData() as {
+    products: Promise<ProductArraySchema>;
+  };
   console.log(products);
 
   return (
     <div>
       <Banner />
-      <h1 className="mt-8 text-xl">Peças de dstaque</h1>
-      {products && <FeaturedProductsMobile products={products} />}
-      {products && <FeaturedProductsDesktop products={products} />}
+      <h1 className="mt-8 text-base">Peças de destaque</h1>
+      <Suspense fallback={<div>Carregando...</div>}>
+        <Await resolve={products}>
+          {(resolvedProducts) => (
+            <>
+              {resolvedProducts && (
+                <FeaturedProductsMobile products={resolvedProducts} />
+              )}
+              {resolvedProducts && (
+                <FeaturedProductsDesktop products={resolvedProducts} />
+              )}
+            </>
+          )}
+        </Await>
+      </Suspense>
+
       <Payments />
     </div>
   );
