@@ -10,6 +10,7 @@ const productSchema = z.object({
 
 const productArraySchema = z.array(productSchema);
 
+type ProductSchema = z.infer<typeof productSchema>;
 type ProductArraySchema = z.infer<typeof productArraySchema>;
 
-export { productArraySchema, type ProductArraySchema };
+export { productArraySchema, type ProductArraySchema, type ProductSchema };
