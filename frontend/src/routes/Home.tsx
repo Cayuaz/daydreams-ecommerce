@@ -14,7 +14,7 @@ import { Await, useLoaderData } from "react-router-dom";
 
 //
 export const loader = () => {
-  const productPromise = axiosInstance
+  const productsPromise = axiosInstance
     .get("/products/featured")
     .then((res) => {
       console.log(res);
@@ -32,7 +32,7 @@ export const loader = () => {
       return [];
     });
 
-  return { products: productPromise };
+  return { products: productsPromise };
 };
 
 export const Component = () => {
@@ -44,7 +44,7 @@ export const Component = () => {
   return (
     <div>
       <Banner />
-      <h1 className="mt-8 text-base">Peças de destaque</h1>
+      <h1 className="mt-8 text-base xl:text-xl">Peças de destaque</h1>
       <Suspense fallback={<ProductSkeleton />}>
         <Await resolve={products}>
           {(resolvedProducts) => (

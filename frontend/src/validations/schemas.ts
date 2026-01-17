@@ -10,7 +10,19 @@ const productSchema = z.object({
 
 const productArraySchema = z.array(productSchema);
 
+const productsAndTotalSchema = z.object({
+  products: productArraySchema,
+  total: z.number(),
+});
+
 type ProductSchema = z.infer<typeof productSchema>;
 type ProductArraySchema = z.infer<typeof productArraySchema>;
+type ProductsAndTotalSchema = z.infer<typeof productsAndTotalSchema>;
 
-export { productArraySchema, type ProductArraySchema, type ProductSchema };
+export {
+  productArraySchema,
+  productsAndTotalSchema,
+  type ProductArraySchema,
+  type ProductSchema,
+  type ProductsAndTotalSchema,
+};
