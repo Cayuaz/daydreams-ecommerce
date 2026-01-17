@@ -1,5 +1,5 @@
 // import { Decimal } from "decimal.js";
-// import { prisma } from "./lib/prisma.js";
+import { prisma } from "./lib/prisma.js";
 
 // try {
 //   await prisma.product.createMany({
@@ -179,11 +179,11 @@
 //   console.log(error);
 // }
 
-// // try {
-// //   await prisma.product.update({
-// //     where: { id: "528ed2e3-76b8-4a70-8418-958b46ae970e" },
-// //     data: { isFeatured: true },
-// //   });
-// // } catch (error) {
-// //   console.log(error);
-// // }
+try {
+  await prisma.product.update({
+    where: { id: "3cf87e9b-0da2-4f74-8fc7-8a335ac13ec8" },
+    data: { isFeatured: true },
+  });
+} catch (error) {
+  console.log(error);
+}
