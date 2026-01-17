@@ -24,10 +24,9 @@ export class ProductRepository implements IProductRepository {
     });
 
     const products = productsData.map((product) => new Product(product));
-    const totalPages = (total / pageSize).toFixed(2);
-    const parsedTotalPages = parseFloat(totalPages);
+    const totalPages = Math.ceil(total / pageSize);
 
-    return { products, parsedTotalPages };
+    return { products, totalPages };
   }
   //Busca um produto pelo ID
   async getProduct(productId: string) {
