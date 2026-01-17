@@ -2,6 +2,102 @@
 // import { prisma } from "./lib/prisma.js";
 
 // try {
+//   await prisma.product.createMany({
+//     data: [
+//       {
+//         name: "Touca Inimal Black",
+//         price: new Decimal(120),
+//         description:
+//           'Touca beanie na cor preta, confeccionada em tricô de alta densidade para maior conforto térmico e durabilidade. Possui modelagem anatômica que se ajusta perfeitamente à cabeça e destaca-se pelo bordado frontal "Inimal" em linha branca contrastante com design abstrato minimalista.',
+//         imageUrl: "/touca-inimal-black.png",
+//       },
+//       {
+//         name: "Camo Pants",
+//         price: new Decimal(400),
+//         description:
+//           "Calça cargo com estampa camuflada clássica em tons de verde e marrom. Confeccionada em sarja robusta, possui modelagem wide leg utilitária com múltiplos bolsos laterais funcionais e costuras reforçadas, unindo a estética militar clássica ao conforto do streetwear contemporâneo.",
+//         imageUrl: "/camo-pants.png",
+//         isFeatured: true,
+//       },
+//       {
+//         name: "Moletom Essentials Gray",
+//         price: new Decimal(300),
+//         description:
+//           'Item chave da coleção Essentials. Moletom canguru na cor cinza chumbo com acabamento "stone washed" para um visual vintage autêntico. Produzido em felpa 100% algodão de gramatura pesada (360g/m²), oferece estrutura robusta, capuz duplo e caimento boxy característico da linha.',
+//         imageUrl: "/moletom-essentials-gray.png",
+//         isFeatured: true,
+//       },
+//       {
+//         name: "Camiseta Spirits",
+//         price: new Decimal(350),
+//         description:
+//           'Camiseta oversized preta em malha premium 100% algodão. O destaque da peça é a estampa frontal "Spirits", aplicada em silk digital de alta definição que reproduz texturas de pintura a óleo abstrata em tons terrosos e esverdeados, criando uma peça de vestuário com aura artística única.',
+//         imageUrl: "/camiseta-spirits.png",
+//       },
+//       {
+//         name: "Meia Daydreams Black",
+//         price: new Decimal(70),
+//         description:
+//           'Meia de cano alto na cor preta, desenvolvida em blend de algodão e poliamida para respiração e ajuste ideal. Apresenta o patch exclusivo "Daydreams" bordado na lateral, trazendo um detalhe colorido e artístico que eleva o acessório básico a um item de destaque no look.',
+//         imageUrl: "/meia-daydreams-black.png",
+//       },
+//       {
+//         name: "Meia Daydreams White",
+//         price: new Decimal(70),
+//         description:
+//           'Meia de cano alto clássica na cor branca, com estrutura canelada reforçada no arco do pé. O diferencial fica por conta do patch quadrado "Daydreams" aplicado na lateral superior, adicionando uma identidade visual vibrante e exclusiva à peça essencial.',
+//         imageUrl: "/meia-daydreams-white.png",
+//       },
+//       {
+//         name: "Moletom Essentials Brown",
+//         price: new Decimal(300),
+//         description:
+//           "Item chave da coleção Essentials. Moletom canguru em tom marrom café com lavagem estonada especial que realça as costuras e proporciona toque aveludado. Produzido em felpa 100% algodão de gramatura pesada (360g/m²), oferece estrutura robusta, capuz duplo e caimento boxy característico da linha.",
+//         imageUrl: "/moletom-essentials-brown.png",
+//       },
+//       {
+//         name: "Camiseta Essentials Red",
+//         price: new Decimal(350),
+//         description:
+//           'Peça fundamental da linha Essentials. Camiseta na cor vermelho bordô (Burgundy) com intensa lavagem "acid wash", criando nuances únicas de cor. Confeccionada em algodão premium de alta densidade, possui modelagem oversized estruturada e gola careca reforçada, garantindo durabilidade e estilo.',
+//         imageUrl: "/camiseta-essentials-red.png",
+//       },
+//       {
+//         name: "Camo Jorts",
+//         price: new Decimal(300),
+//         description:
+//           'Bermuda "Jorts" (Jeans Shorts) com padronagem camuflada. Modelagem ampla abaixo do joelho seguindo a tendência skatewear dos anos 90/00. Feita em tecido resistente, conta com bolsos cargo laterais espaçosos e passantes reforçados, ideal para o dia a dia urbano.',
+//         imageUrl: "/camo-jorts.jpg",
+//         isFeatured: true,
+//       },
+//       {
+//         name: "Touca Inimal Gray",
+//         price: new Decimal(120),
+//         description:
+//           'Touca beanie em tricô na cor cinza escuro mescla. Oferece elasticidade e conforto sem perder a forma. Traz o logo "Inimal" bordado em branco na parte frontal, uma peça versátil e atemporal indispensável para compor o visual nos dias mais frios.',
+//         imageUrl: "/touca-inimal-gray.png",
+//       },
+//       {
+//         name: "Camiseta Essentials Blue",
+//         price: new Decimal(350),
+//         description:
+//           "Peça fundamental da linha Essentials. Camiseta na cor azul navy profundo com lavagem estonada suave, conferindo aspecto vintage e toque macio. Confeccionada em algodão premium de alta densidade, possui modelagem oversized estruturada e gola careca reforçada, garantindo durabilidade e estilo.",
+//         imageUrl: "/camiseta-essentials-blue.png",
+//       },
+//       {
+//         name: "Camiseta Essentials Black",
+//         price: new Decimal(350),
+//         description:
+//           "Peça fundamental da linha Essentials. Camiseta na cor preto estonado (charcoal), submetida a lavagem industrial para uma cor exclusiva e textura confortável. Confeccionada em algodão premium de alta densidade, possui modelagem oversized estruturada e gola careca reforçada, garantindo durabilidade e estilo.",
+//         imageUrl: "/camiseta-essentials-black.png",
+//       },
+//     ],
+//   });
+// } catch (error) {
+//   console.log(error);
+// }
+
+// try {
 //   await prisma.user.create({
 //     data: {
 //       name: "joao",
