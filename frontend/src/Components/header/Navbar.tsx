@@ -60,7 +60,7 @@ const Navbar = () => {
         <li className="relative">
           <div className="flex items-center gap-1 group">
             <NavLink
-              to={"/products"}
+              to={"/products/page/1"}
               className={({ isActive }) =>
                 `${
                   isActive ? "underline" : "text-white"
