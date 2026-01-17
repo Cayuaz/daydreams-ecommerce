@@ -12,7 +12,7 @@ const ProductCard = ({ product, imgWidth, btn }: ProductCardProps) => {
   // Componente de card de produtos
   return (
     <div
-      className="flex flex-col items-center gap-2 flex-wrap"
+      className="flex flex-col items-center gap-2 flex-wrap justify-between"
       key={product.id}
     >
       <img

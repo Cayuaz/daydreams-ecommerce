@@ -14,13 +14,12 @@ import {
   type LoaderFunctionArgs,
 } from "react-router-dom";
 
-export const loader = ({ request }: LoaderFunctionArgs) => {
-  const url = new URL(request.url);
-  const page = url.searchParams.get("page") || "1";
-  console.log(page);
+export const loader = ({ request, params }: LoaderFunctionArgs) => {
+  const { pageNumber } = params;
+  console.log(pageNumber);
 
   const productsPromise = axiosInstance
-    .get(`/products?query=""page=${page}`, { signal: request.signal })
+    .get(`/products?q=&page=${pageNumber}`, { signal: request.signal })
     .then((res) => {
       console.log(res);
       const { success, data } = productsAndTotalSchema.safeParse(res);
@@ -49,7 +48,7 @@ export const Component = () => {
         <Await resolve={productsAndTotal}>
           {(resolvedProducts) => (
             <>
-              <div className="grid grid-cols-4 gap-8 my-10">
+              <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 my-10 px-8">
                 {resolvedProducts.products.length > 0 &&
                   resolvedProducts.products.map((product) => (
                     <ProductCard
@@ -64,22 +63,25 @@ export const Component = () => {
                 )}
               </div>
               <div className="flex gap-8 items-center justify-center my-15">
-                {resolvedProducts.total > 1 &&
-                  Array.from({ length: resolvedProducts.total }, (_, i) => (
-                    <NavLink
-                      to={`/products/page/${i + 1}`}
-                      className={({ isActive }) =>
-                        `${
-                          isActive
-                            ? "bg-[#974947] rounded-full size-6 shadow"
-                            : ""
-                        } transition-colors`
-                      }
-                      key={i}
-                    >
-                      {i + 1}
-                    </NavLink>
-                  ))}
+                {resolvedProducts.totalPages > 1 &&
+                  Array.from(
+                    { length: resolvedProducts.totalPages },
+                    (_, i) => (
+                      <NavLink
+                        to={`/products/page/${i + 1}`}
+                        className={({ isActive }) =>
+                          `${
+                            isActive
+                              ? "bg-[#974947] rounded-full size-6 shadow"
+                              : ""
+                          } transition-colors`
+                        }
+                        key={i}
+                      >
+                        {i + 1}
+                      </NavLink>
+                    )
+                  )}
               </div>
             </>
           )}

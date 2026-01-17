@@ -12,7 +12,7 @@ const productArraySchema = z.array(productSchema);
 
 const productsAndTotalSchema = z.object({
   products: productArraySchema,
-  total: z.number(),
+  totalPages: z.number(),
 });
 
 type ProductSchema = z.infer<typeof productSchema>;
