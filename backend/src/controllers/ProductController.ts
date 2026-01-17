@@ -8,7 +8,7 @@ export class GetProductsController {
 
   handle = async (req: Request, res: Response) => {
     //Se a query for undefined, por padrão ela será uma string vazia, assim todos os produtos serão retornados
-    const query = req.query.search ? String(req.query.search) : "";
+    const query = req.query.q ? String(req.query.q) : "";
     //Se a page for undefined, por padrão ela será 1
     let page = Number(req.query.page) || 1;
     if (page < 1) page = 1;

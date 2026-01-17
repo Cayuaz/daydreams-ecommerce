@@ -1,10 +1,10 @@
 import type { Product } from "../entities/Product.js";
 
-type ProductsAndTotal = { products: Product[]; total: number };
+type ProductsAndTotal = { products: Product[]; parsedTotalPages: number };
 
 export interface IProductRepository {
   getProducts: (
-    search: string,
+    query: string,
     pageSize: number,
     currentPage: number
   ) => Promise<ProductsAndTotal>;
