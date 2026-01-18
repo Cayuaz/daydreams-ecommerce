@@ -20,6 +20,7 @@ type ProductArraySchema = z.infer<typeof productArraySchema>;
 type ProductsAndTotalSchema = z.infer<typeof productsAndTotalSchema>;
 
 export {
+  productSchema,
   productArraySchema,
   productsAndTotalSchema,
   type ProductArraySchema,

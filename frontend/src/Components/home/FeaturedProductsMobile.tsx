@@ -1,5 +1,5 @@
 import type { ProductArraySchema } from "@/validations/schemas";
-import ProductCard from "../ProductCard";
+import ProductCard from "../products/ProductCard";
 
 type FeaturedProductsMobileProps = {
   products: ProductArraySchema;

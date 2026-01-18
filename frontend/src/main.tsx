@@ -21,6 +21,10 @@ const router = createBrowserRouter([
         path: "/products/page/:pageNumber",
         lazy: () => import("./routes/Products.tsx"),
       },
+      {
+        path: "/products/:id",
+        lazy: () => import("./routes/Product.tsx"),
+      },
     ],
   },
 ]);
@@ -28,5 +32,5 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <RouterProvider router={router} />
-  </StrictMode>
+  </StrictMode>,
 );

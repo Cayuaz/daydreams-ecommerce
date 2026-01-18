@@ -1,7 +1,7 @@
-import ProductCard from "@/Components/ProductCard";
-import ProductSkeleton from "@/Components/ProductSkeleton";
-import UnavailableProducts from "@/Components/UnavailableProducts";
-import { axiosInstance } from "@/services/axios";
+import ProductCard from "@/Components/products/ProductCard";
+import ProductSkeleton from "@/Components/products/ProductSkeleton";
+import UnavailableProducts from "@/Components/products/UnavailableProducts";
+import { axiosInstance } from "@/lib/axios";
 import {
   productsAndTotalSchema,
   type ProductsAndTotalSchema,
@@ -19,7 +19,7 @@ export const loader = ({ request, params }: LoaderFunctionArgs) => {
   console.log(pageNumber);
 
   const productsPromise = axiosInstance
-    .get(`/products?q=&page=${pageNumber}`, { signal: request.signal })
+    .get(`/products?q=&page=${pageNumber || "1"}`, { signal: request.signal })
     .then((res) => {
       console.log(res);
       const { success, data } = productsAndTotalSchema.safeParse(res);
@@ -48,6 +48,7 @@ export const Component = () => {
         <Await resolve={productsAndTotal}>
           {(resolvedProducts) => (
             <>
+              {/* Card dos produtos */}
               <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 my-10 px-8">
                 {resolvedProducts.products.length > 0 &&
                   resolvedProducts.products.map((product) => (
@@ -62,6 +63,7 @@ export const Component = () => {
                   <UnavailableProducts />
                 )}
               </div>
+              {/* Página dos produtos */}
               <div className="flex gap-8 items-center justify-center my-15">
                 {resolvedProducts.totalPages > 1 &&
                   Array.from(
@@ -80,7 +82,7 @@ export const Component = () => {
                       >
                         {i + 1}
                       </NavLink>
-                    )
+                    ),
                   )}
               </div>
             </>

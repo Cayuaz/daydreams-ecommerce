@@ -1,6 +1,7 @@
 import type { ProductSchema } from "@/validations/schemas";
-import Button from "./Button";
+import Button from "../Button";
 import { formPrice } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
 
 type ProductCardProps = {
   product: ProductSchema;
@@ -9,6 +10,8 @@ type ProductCardProps = {
 };
 
 const ProductCard = ({ product, imgWidth, btn }: ProductCardProps) => {
+  const navigate = useNavigate();
+
   // Componente de card de produtos
   return (
     <div
@@ -19,6 +22,7 @@ const ProductCard = ({ product, imgWidth, btn }: ProductCardProps) => {
         src={product.imageUrl}
         alt="Produto de destaque"
         className={`${imgWidth} sm:w-3/6 hover:scale-105 transition-transform`}
+        onClick={() => navigate(`/products/${product.id}`)}
       />
       <span className="text-sm sm:text-base">{product.name}</span>
       <span className="text-sm font-bold">{formPrice(product.price)}</span>

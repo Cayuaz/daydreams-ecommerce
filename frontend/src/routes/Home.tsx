@@ -2,9 +2,9 @@ import Banner from "@/Components/home/Banner";
 import FeaturedProductsDesktop from "@/Components/home/FeaturedProductsDesktop";
 import FeaturedProductsMobile from "@/Components/home/FeaturedProductsMobile";
 import Payments from "@/Components/home/Payments";
-import ProductSkeleton from "@/Components/ProductSkeleton";
-import UnavailableProducts from "@/Components/UnavailableProducts";
-import { axiosInstance } from "@/services/axios";
+import ProductSkeleton from "@/Components/products/ProductSkeleton";
+import UnavailableProducts from "@/Components/products/UnavailableProducts";
+import { axiosInstance } from "@/lib/axios";
 import {
   productArraySchema,
   type ProductArraySchema,
