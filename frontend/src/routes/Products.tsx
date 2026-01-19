@@ -11,29 +11,39 @@ import { Suspense } from "react";
 import {
   Await,
   useLoaderData,
+  useSearchParams,
   type LoaderFunctionArgs,
 } from "react-router-dom";
 
 export const loader = ({ request, params }: LoaderFunctionArgs) => {
+  //Número da página
   const { pageNumber } = params;
   console.log(pageNumber);
 
+  //Query de busca
+  const url = new URL(request.url);
+  const q = url.searchParams.get("q");
+
+  console.log("query:", q);
+
   const productsPromise = axiosInstance
-    .get(`/products?q=&page=${pageNumber || "1"}`, { signal: request.signal })
+    .get(`/products?q=${q || ""}&page=${pageNumber || "1"}`, {
+      signal: request.signal,
+    })
     .then((res) => {
       console.log(res);
       const { success, data } = productsAndTotalSchema.safeParse(res);
 
       if (!success) {
         console.log("Falha na verificação dos produtos!");
-        return [];
+        return false;
       }
 
       return data;
     })
     .catch((err) => {
       console.log(err);
-      return [];
+      return false;
     });
 
   return { products: productsPromise };
@@ -43,9 +53,29 @@ export const Component = () => {
   const { products } = useLoaderData() as {
     products: Promise<ProductsAndTotalSchema>;
   };
+
+  //Como existem componentes que dependem da query de busca, é necessário obtê-la aqui também, já que essa rota serve tanto para a listagem de produtos quanto para os resultados de busca
+  const [searchParams] = useSearchParams();
+  const q = searchParams.get("q");
+
   return (
     <div>
-      <h1 className="my-8 text-base xl:text-xl">Conheça os nossos produtos!</h1>
+      {/* Título da página para produtos */}
+      {!q && (
+        <h1 className="my-8 text-base xl:text-xl">
+          Conheça os nossos produtos!
+        </h1>
+      )}
+      {/* Título da página para pesquisas */}
+      {q && (
+        <div className="px-8">
+          <h1 className="my-8 text-base text-center xl:text-xl">
+            Resultados da pesquisa
+          </h1>
+          <p className="text-left text-base">Termo buscado: "{q}"</p>
+        </div>
+      )}
+
       <Suspense fallback={<SkeletonProducts />}>
         <Await resolve={products}>
           {(resolvedProducts) => (
@@ -63,9 +93,14 @@ export const Component = () => {
                   ))}
                 </div>
               )}
-              {/* Produtos indisponíveis */}
+              {/* Componente de produtos indisponíveis */}
+              {!resolvedProducts.products && <UnavailableProducts />}
+              {/* Mensagem de produtos não encontrados */}
               {resolvedProducts.products.length === 0 && (
-                <UnavailableProducts />
+                <p className="text-base text-[#974947] font-bold">
+                  Nenhum produto foi encontrado! Por favor utilize outra palavra
+                  e tente novamente.
+                </p>
               )}
               {/* Página dos produtos */}
               <div className="flex gap-8 items-center justify-center my-15">

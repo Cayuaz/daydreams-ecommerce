@@ -1,5 +1,6 @@
 import { HandbagIcon, CircleUserIcon, SearchIcon } from "lucide-react";
 import Navbar from "./Navbar";
+import { Form } from "react-router-dom";
 
 const HeaderDesktop = () => {
   return (
@@ -12,14 +13,21 @@ const HeaderDesktop = () => {
           className="w-40 h-30"
         />
 
-        <div className="flex gap-4 w-full mx-auto items-center bg-white text-[#222224] py-2 px-4 rounded-lg">
-          <SearchIcon className="w-5" />
+        <Form
+          method="get"
+          action="/products/page/1"
+          className="flex gap-4 w-full mx-auto items-center bg-white text-[#222224] py-2 px-4 rounded-lg"
+        >
+          <button type="submit">
+            <SearchIcon className="w-5" />
+          </button>
           <input
             type="text"
+            name="q"
             placeholder="O que você está buscando?"
-            className="outline-0 w-full text-center text-sm lg:text-base"
+            className="outline-0 w-full text-left text-sm lg:text-base"
           />
-        </div>
+        </Form>
 
         <div className="flex gap-3 justify-end">
           <CircleUserIcon />
