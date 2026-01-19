@@ -2,6 +2,7 @@ import { Product } from "../entities/Product.js";
 import { prisma } from "../lib/prisma.js";
 import type { IProductRepository } from "./IProductRepository.js";
 
+//Mapeia a query string para palavras-chave relevantes
 const getKeyWords = (query: string) => {
   const words = {
     camisetas: ["camiseta", "t-shirt"],
@@ -21,6 +22,7 @@ export class ProductRepository implements IProductRepository {
     const keywords = getKeyWords(query);
 
     const productsData = await prisma.product.findMany({
+      // ajusta a busca dos produtos para considerar todas as palavras-chave, o or faz uma busca com cada palavra dentro do array
       where: {
         OR: keywords.map((keyword) => ({
           name: { contains: keyword, mode: "insensitive" },
