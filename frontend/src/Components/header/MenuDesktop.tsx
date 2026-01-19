@@ -1,37 +1,57 @@
 import { Link } from "react-router-dom";
 
-const MenuDesktop = () => {
+type MenuDesktopProps = { rotate: () => void };
+
+const MenuDesktop = ({ rotate }: MenuDesktopProps) => {
   return (
     <div className="absolute top-12 left-0 flex flex-col gap-4 bg-[#222224] shadow px-3 py-4 w-45 rounded-sm text-base items-start">
+      {/* Todos os produtos */}
       <Link
-        to={"/search/products/all"}
+        to={"/products/page/1"}
         className="hover:text-[#974947] transition-colors duration-300 ease-in-out"
+        onClick={() => rotate()}
       >
         All
       </Link>
+      {/* Camisetas */}
       <Link
-        to={"/search/products/camisetas"}
+        to={"/products/category/camisetas/1"}
         className="hover:text-[#974947] transition-colors duration-300 ease-in-out"
+        onClick={() => rotate()}
       >
         Camisetas
       </Link>
+      {/* Calças */}
       <Link
-        to={"/search/products/calças"}
+        to={"/products/category/calcas/1"}
         className="hover:text-[#974947] transition-colors duration-300 ease-in-out"
+        onClick={() => rotate()}
       >
         Calças
       </Link>
+      {/* Bermudas e Shorts */}
       <Link
-        to={"/search/products/bermuda-shorts"}
+        to={"/products/category/jorts-shorts/1"}
         className="hover:text-[#974947] transition-colors duration-300 ease-in-out"
+        onClick={() => rotate()}
       >
         Bermuda e Shorts
       </Link>
+      {/* Casacos */}
       <Link
-        to={"/search/products/casacos"}
+        to={"/products/category/casacos/1"}
         className="hover:text-[#974947] transition-colors duration-300 ease-in-out"
+        onClick={() => rotate()}
       >
         Casacos
+      </Link>
+      {/* Acessórios */}
+      <Link
+        to={"/products/category/acessorios/1"}
+        className="hover:text-[#974947] transition-colors duration-300 ease-in-out"
+        onClick={() => rotate()}
+      >
+        Acessórios
       </Link>
     </div>
   );

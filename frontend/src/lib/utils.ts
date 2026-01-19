@@ -11,3 +11,12 @@ export const formPrice = (value: number) => {
     currency: "BRL",
   }).format(value);
 };
+
+export const getCategoryTitle = (category: string) => {
+  if (category === "camisetas") return "Camisetas";
+  if (category === "calcas") return "Calças";
+  if (category === "jorts-shorts") return "Bermuda e Shorts";
+  if (category === "casacos") return "Casacos";
+  if (category === "acessorios") return "Acessórios";
+  return "Produtos";
+};

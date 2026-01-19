@@ -31,6 +31,7 @@ const Navbar = () => {
   return (
     <nav>
       <ul className="flex gap-7 text-base">
+        {/* Home */}
         <li className="">
           <NavLink
             to={"/"}
@@ -44,6 +45,7 @@ const Navbar = () => {
             Home
           </NavLink>
         </li>
+        {/* About */}
         <li className="hover:text-[#974947]">
           <NavLink
             to={"/About"}
@@ -57,6 +59,7 @@ const Navbar = () => {
             Sobre
           </NavLink>
         </li>
+        {/* Products */}
         <li className="relative">
           <div className="flex items-center gap-1 group">
             <NavLink
@@ -79,7 +82,7 @@ const Navbar = () => {
           </div>
 
           {/*Menu de produtos */}
-          {rotate && <MenuDesktop />}
+          {rotate && <MenuDesktop rotate={handleRotate} />}
         </li>
       </ul>
     </nav>

@@ -44,12 +44,14 @@ export const HeaderMobileMenu = () => {
             </SheetClose>
           </SheetTitle>
           <SheetTitle className="font-normal">
-            <Link
-              to={"/about"}
-              className="hover:text-[#974947] hover:underline"
-            >
-              Sobre
-            </Link>
+            <SheetClose asChild>
+              <Link
+                to={"/About"}
+                className="hover:text-[#974947] hover:underline"
+              >
+                Sobre
+              </Link>
+            </SheetClose>
           </SheetTitle>
           <SheetTitle className="font-normal group flex items-center">
             <SheetClose asChild>

@@ -1,7 +1,7 @@
-import Pages from "@/Components/products/Pages";
 import ProductsCard from "@/Components/products/ProductsCard";
 import { SkeletonProducts } from "@/Components/products/SkeletonProducts";
 import UnavailableProducts from "@/Components/products/UnavailableProducts";
+import Pages from "@/Components/products/Pages";
 import { axiosInstance } from "@/lib/axios";
 import {
   productsAndTotalSchema,
@@ -10,22 +10,27 @@ import {
 import { Suspense } from "react";
 import {
   Await,
+  redirect,
   useLoaderData,
+  useParams,
   type LoaderFunctionArgs,
 } from "react-router-dom";
+import { getCategoryTitle } from "@/lib/utils";
 
-export const loader = ({ request, params }: LoaderFunctionArgs) => {
-  const { pageNumber } = params;
-  console.log(pageNumber);
+export const loader = ({ params, request }: LoaderFunctionArgs) => {
+  const categoryName = params.categoryName;
+  const pageNumber = params.pageNumber;
 
-  const productsPromise = axiosInstance
-    .get(`/products?q=&page=${pageNumber || "1"}`, { signal: request.signal })
+  if (!categoryName) return redirect("/");
+
+  const productsPromise = axiosInstance(
+    `/products?q=${categoryName}&page=${pageNumber || 1}`,
+    { signal: request.signal },
+  )
     .then((res) => {
-      console.log(res);
       const { success, data } = productsAndTotalSchema.safeParse(res);
-
       if (!success) {
-        console.log("Falha na verificação dos produtos!");
+        console.log("Falha na verificação dos produtos por categoria!");
         return [];
       }
 
@@ -43,16 +48,23 @@ export const Component = () => {
   const { products } = useLoaderData() as {
     products: Promise<ProductsAndTotalSchema>;
   };
+
+  const categoryName = useParams().categoryName as string;
+
   return (
     <div>
-      <h1 className="my-8 text-base xl:text-xl">Conheça os nossos produtos!</h1>
+      {/* Título da categoria */}
+      <h1 className="my-8 text-base xl:text-xl">
+        {getCategoryTitle(categoryName)}
+      </h1>
       <Suspense fallback={<SkeletonProducts />}>
         <Await resolve={products}>
           {(resolvedProducts) => (
             <>
               {/* Card dos produtos */}
               {resolvedProducts.products.length > 0 && (
-                <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 my-10 px-8">
+                <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 my-20 px-8">
+                  {" "}
                   {resolvedProducts.products.map((product) => (
                     <ProductsCard
                       product={product}
@@ -63,19 +75,19 @@ export const Component = () => {
                   ))}
                 </div>
               )}
-              {/* Produtos indisponíveis */}
+              {/* Componente de produtos indisponíveis */}
               {resolvedProducts.products.length === 0 && (
                 <UnavailableProducts />
               )}
-              {/* Página dos produtos */}
-              <div className="flex gap-8 items-center justify-center my-15">
-                {resolvedProducts.totalPages > 1 && (
+              {/*Páginas dos produtos */}
+              {resolvedProducts.totalPages > 1 && (
+                <div className="flex gap-8 items-center justify-center my-15">
                   <Pages
-                    url="/products/page/"
                     total={resolvedProducts.totalPages}
+                    url={`/search/products/category/${categoryName}/page/`}
                   />
-                )}
-              </div>
+                </div>
+              )}
             </>
           )}
         </Await>

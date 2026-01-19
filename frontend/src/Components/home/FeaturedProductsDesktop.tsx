@@ -3,6 +3,7 @@ import { formPrice } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import Button from "../Button";
+import { useNavigate } from "react-router-dom";
 
 type FeaturedProductsDesktopProps = {
   products: ProductArraySchema;
@@ -13,6 +14,7 @@ const FeaturedProductsDesktop = ({
 }: FeaturedProductsDesktopProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemsPerPage = 4;
+  const navigate = useNavigate();
 
   // o "|| 1" evita erro de divisão por zero se não houver produtos
   //8 produtos: 8 / 4 = 2
@@ -77,6 +79,7 @@ const FeaturedProductsDesktop = ({
               src={product.imageUrl}
               alt="Produto de destaque"
               className="w-3/5 object-contain hover:scale-105 transition-transform"
+              onClick={() => navigate(`/products/${product.id}`)}
             />
             <span className="text-sm text-center">{product.name}</span>
             <span className="text-sm font-bold">
