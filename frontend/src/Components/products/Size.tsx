@@ -1,18 +1,20 @@
-import { useState } from "react";
-
 const sizes = ["P", "M", "G", "GG"];
 
-const Size = () => {
-  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+type SizeProps = {
+  selectedSize: string | null;
+  setSelectedSize: (size: string | null) => void;
+};
 
+const Size = ({ selectedSize, setSelectedSize }: SizeProps) => {
   return (
-    <div className="flex flex-col gap-4 items-start">
+    <div className="flex flex-col gap-4 items-start ">
       <span>Tamanho</span>
-      <div className="flex gap-4 justify-center">
-        {sizes.map((size) => (
+      <div className="flex gap-4">
+        {sizes.map((size, i) => (
           <button
-            className={`${selectedSize === size ? "bg-black/40" : ""} border border-black py-1 w-15 rounded transition-colors`}
+            className={`${selectedSize === size ? "bg-[#974947]/80" : "hover:bg-[#6A6868]/40"} border border-black w-10 sm:w-15 py-1 rounded transition-colors text-sm`}
             onClick={() => setSelectedSize(size)}
+            key={i}
           >
             {size}
           </button>

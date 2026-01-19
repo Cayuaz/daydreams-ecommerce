@@ -1,5 +1,5 @@
-import ProductCard from "@/Components/products/ProductCard";
-import ProductSkeleton from "@/Components/products/ProductSkeleton";
+import ProductsCard from "@/Components/products/ProductsCard";
+import { SkeletonProducts } from "@/Components/products/SkeletonProducts";
 import UnavailableProducts from "@/Components/products/UnavailableProducts";
 import { axiosInstance } from "@/lib/axios";
 import {
@@ -36,23 +36,25 @@ export const loader = ({ request, params }: LoaderFunctionArgs) => {
       return [];
     });
 
-  return productsPromise;
+  return { products: productsPromise };
 };
 
 export const Component = () => {
-  const productsAndTotal = useLoaderData() as Promise<ProductsAndTotalSchema>;
+  const { products } = useLoaderData() as {
+    products: Promise<ProductsAndTotalSchema>;
+  };
   return (
     <div>
       <h1 className="my-8 text-base xl:text-xl">Conheça os nossos produtos!</h1>
-      <Suspense fallback={<ProductSkeleton />}>
-        <Await resolve={productsAndTotal}>
+      <Suspense fallback={<SkeletonProducts />}>
+        <Await resolve={products}>
           {(resolvedProducts) => (
             <>
               {/* Card dos produtos */}
               <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 my-10 px-8">
                 {resolvedProducts.products.length > 0 &&
                   resolvedProducts.products.map((product) => (
-                    <ProductCard
+                    <ProductsCard
                       product={product}
                       imgWidth="w-4/6"
                       btn={true}

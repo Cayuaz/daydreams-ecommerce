@@ -2,7 +2,7 @@ import Banner from "@/Components/home/Banner";
 import FeaturedProductsDesktop from "@/Components/home/FeaturedProductsDesktop";
 import FeaturedProductsMobile from "@/Components/home/FeaturedProductsMobile";
 import Payments from "@/Components/home/Payments";
-import ProductSkeleton from "@/Components/products/ProductSkeleton";
+import { SkeletonProducts } from "@/Components/products/SkeletonProducts";
 import UnavailableProducts from "@/Components/products/UnavailableProducts";
 import { axiosInstance } from "@/lib/axios";
 import {
@@ -45,7 +45,7 @@ export const Component = () => {
     <div>
       <Banner />
       <h1 className="mt-8 text-base xl:text-xl">Peças de destaque</h1>
-      <Suspense fallback={<ProductSkeleton />}>
+      <Suspense fallback={<SkeletonProducts />}>
         <Await resolve={products}>
           {(resolvedProducts) => (
             <>

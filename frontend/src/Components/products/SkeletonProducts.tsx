@@ -1,6 +1,6 @@
 import { Skeleton } from "../ui/skeleton";
 
-const ProductSkeleton = () => {
+const SkeletonProducts = () => {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 justify-center mt-10 mb-20 w-4/5 mx-auto">
       <div className="flex flex-col space-y-3 items-center justify-center">
@@ -27,4 +27,4 @@ const ProductSkeleton = () => {
   );
 };
 
-export default ProductSkeleton;
+export { SkeletonProducts };

@@ -1,33 +1,44 @@
-import type { ProductSchema } from "@/validations/schemas";
-import Button from "../Button";
 import { formPrice } from "@/lib/utils";
-import { useNavigate } from "react-router-dom";
+import type { ProductSchema } from "@/validations/schemas";
+import { useState } from "react";
+import { Separator } from "../ui/separator";
+import Button from "../Button";
+import Size from "./Size";
 
-type ProductCardProps = {
-  product: ProductSchema;
-  imgWidth: string;
-  btn: boolean;
-};
+type ProductCardProps = { product: ProductSchema };
 
-const ProductCard = ({ product, imgWidth, btn }: ProductCardProps) => {
-  const navigate = useNavigate();
+const ProductCard = ({ product }: ProductCardProps) => {
+  //Size vai conter o tamanho selecionado, e no Size component vai ser verificado qual botão está selecionado
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
-  // Componente de card de produtos
   return (
-    <div
-      className="flex flex-col items-center gap-2 flex-wrap justify-between"
-      key={product.id}
-    >
-      <img
-        src={product.imageUrl}
-        alt="Produto de destaque"
-        className={`${imgWidth} sm:w-3/6 hover:scale-105 transition-transform`}
-        onClick={() => navigate(`/products/${product.id}`)}
-      />
-      <span className="text-sm sm:text-base">{product.name}</span>
-      <span className="text-sm font-bold">{formPrice(product.price)}</span>
-      {btn && <Button>COMPRAR</Button>}
-    </div>
+    <>
+      {/* Imagem do produto */}
+      <div className="bg-[#6A6868] flex justify-center items-center rounded ">
+        <img
+          src={product.imageUrl}
+          alt={`Produto - ${product.name}`}
+          className="size-80 sm:size-100  hover:scale-105 transition-transform"
+        />
+      </div>
+      {/* Detalhes do produto */}
+      <div className="flex flex-col justify-between gap-6 w-full">
+        <div className="text-left ">
+          <h1>{product.name}</h1>
+          <span className="text-base font-bold">
+            {formPrice(product.price)}
+          </span>
+        </div>
+        <p className="text-left text-sm">{product.description}</p>
+        <Separator orientation="horizontal" className="bg-black " />
+        {/* Componente de tamanho */}
+        <Size selectedSize={selectedSize} setSelectedSize={setSelectedSize} />
+        {/* Botão de comprar */}
+        <Button className="w-full" disabled={selectedSize ? false : true}>
+          COMPRAR
+        </Button>
+      </div>
+    </>
   );
 };
 

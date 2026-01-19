@@ -1,7 +1,6 @@
-import Button from "@/Components/Button";
-import Size from "@/Components/products/Size";
+import ProductCard from "@/Components/products/ProductCard";
+
 import { axiosInstance } from "@/lib/axios";
-import { formPrice } from "@/lib/utils";
 import { productSchema, type ProductSchema } from "@/validations/schemas";
 import { Suspense } from "react";
 import {
@@ -30,38 +29,20 @@ export const loader = ({ request, params }: LoaderFunctionArgs) => {
       return redirect("/");
     });
 
-  return productPromise;
+  return { product: productPromise };
 };
 
 export const Component = () => {
-  const product = useLoaderData() as Promise<ProductSchema>;
+  const { product } = useLoaderData() as { product: Promise<ProductSchema> };
 
   return (
     <div>
       <Suspense fallback={<p>Carregando...</p>}>
         <Await resolve={product}>
           {(resolvedProduct) => (
-            <>
-              <div className="flex flex-col mt-10 mb-20 px-8 gap-10">
-                <div className="bg-[#6A6868] flex justify-center rounded">
-                  <img
-                    src={resolvedProduct.imageUrl}
-                    alt={`Produto - ${resolvedProduct.name}`}
-                    className="w-5/6 hover:scale-105 transition-transform"
-                  />
-                </div>
-
-                <div className="text-left">
-                  <h1>{resolvedProduct.name}</h1>
-                  <span className="text-base font-bold">
-                    {formPrice(resolvedProduct.price)}
-                  </span>
-                </div>
-                <p className="text-justify">{resolvedProduct.description}</p>
-                <Size />
-                <Button className="w-full">COMPRAR</Button>
-              </div>
-            </>
+            <div className="flex flex-col justify-center lg:grid lg:grid-cols-[1fr_1fr] w-full   mx-auto mt-15 mb-40 px-8 gap-10 sm:w-4/5">
+              <ProductCard product={resolvedProduct} />
+            </div>
           )}
         </Await>
       </Suspense>
