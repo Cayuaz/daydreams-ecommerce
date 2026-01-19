@@ -63,7 +63,7 @@ export const Component = () => {
             <>
               {/* Card dos produtos */}
               {resolvedProducts.products.length > 0 && (
-                <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 my-20 px-8">
+                <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 my-10 px-8">
                   {" "}
                   {resolvedProducts.products.map((product) => (
                     <ProductsCard
