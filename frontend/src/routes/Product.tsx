@@ -1,4 +1,5 @@
 import ProductCard from "@/Components/products/ProductCard";
+import SkeletonProduct from "@/Components/products/SkeletonProduct";
 
 import { axiosInstance } from "@/lib/axios";
 import { productSchema, type ProductSchema } from "@/validations/schemas";
@@ -37,7 +38,7 @@ export const Component = () => {
 
   return (
     <div>
-      <Suspense fallback={<p>Carregando...</p>}>
+      <Suspense fallback={<SkeletonProduct />}>
         <Await resolve={product}>
           {(resolvedProduct) => (
             <div className="flex flex-col justify-center lg:grid lg:grid-cols-[1fr_1fr] w-full   mx-auto mt-15 mb-40 px-8 gap-10 sm:w-4/5">
