@@ -2,12 +2,30 @@ import { Product } from "../entities/Product.js";
 import { prisma } from "../lib/prisma.js";
 import type { IProductRepository } from "./IProductRepository.js";
 
+const getKeyWords = (query: string) => {
+  const words = {
+    camisetas: ["camiseta", "t-shirt"],
+    calcas: ["calça", "pants", "jeans"],
+    "jorts-shorts": ["bermuda", "shorts", "short", "jorts"],
+    casacos: ["casaco", "moletom", "jacket", "hoodie"],
+    acessorios: ["acessório", "touca", "boné", "meia"],
+  };
+
+  return words[query as keyof typeof words] || [query];
+};
+
 export class ProductRepository implements IProductRepository {
   //Retorna os 10 primeiros produtos que contenham a query no name (se a query estiver vazia retorna todos os produtos)
   //Pula os produtos conforme a página atual, se for a página for 2, vai pular 10
   async getProducts(query: string, pageSize: number, currentPage: number) {
+    const keywords = getKeyWords(query);
+
     const productsData = await prisma.product.findMany({
-      where: { name: { contains: query, mode: "insensitive" } },
+      where: {
+        OR: keywords.map((keyword) => ({
+          name: { contains: keyword, mode: "insensitive" },
+        })),
+      },
       //Se pageNumber for 3, 3 - 1 = 2, 2 * 10 = 20, ou seja se cada página mostra 10 itens, na 3 ele pula os últimos 20 itens
       skip: (currentPage - 1) * pageSize,
       take: pageSize,
@@ -52,7 +70,7 @@ export class ProductRepository implements IProductRepository {
     });
 
     return featuredProducts.map(
-      (featuredProduct) => new Product(featuredProduct)
+      (featuredProduct) => new Product(featuredProduct),
     );
   }
 }
