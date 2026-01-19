@@ -97,7 +97,7 @@ export const Component = () => {
               {!resolvedProducts.products && <UnavailableProducts />}
               {/* Mensagem de produtos não encontrados */}
               {resolvedProducts.products.length === 0 && (
-                <p className="text-base text-[#974947] font-bold">
+                <p className="text-base text-(--secondary-color) font-bold">
                   Nenhum produto foi encontrado! Por favor utilize outra palavra
                   e tente novamente.
                 </p>

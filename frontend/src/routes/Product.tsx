@@ -41,7 +41,7 @@ export const Component = () => {
       <Suspense fallback={<SkeletonProduct />}>
         <Await resolve={product}>
           {(resolvedProduct) => (
-            <div className="flex flex-col justify-center lg:grid lg:grid-cols-[1fr_1fr] w-full   mx-auto mt-15 mb-40 px-8 gap-10 sm:w-4/5">
+            <div className="flex flex-col justify-center lg:grid lg:grid-cols-[1fr_1fr] w-full mx-auto mt-15 mb-40 px-8 gap-10 sm:w-4/5">
               <ProductCard product={resolvedProduct} />
             </div>
           )}

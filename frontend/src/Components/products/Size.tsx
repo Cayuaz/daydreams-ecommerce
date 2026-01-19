@@ -12,7 +12,7 @@ const Size = ({ selectedSize, setSelectedSize }: SizeProps) => {
       <div className="flex gap-4">
         {sizes.map((size, i) => (
           <button
-            className={`${selectedSize === size ? "bg-[#974947]/80" : "hover:bg-[#6A6868]/40"} border border-black w-10 sm:w-15 py-1 rounded transition-colors text-sm`}
+            className={`${selectedSize === size ? "bg-(--secondary-color)/80" : "hover:bg-[#6A6868]/40"} border border-black w-10 sm:w-15 py-1 rounded transition-colors text-sm`}
             onClick={() => setSelectedSize(size)}
             key={i}
           >

@@ -10,7 +10,7 @@ const HeaderMobile = () => {
         alt="Daydreams logo"
         className="w-50 h-30 mt-6"
       />
-      <Handbag className="hover:text-[#974947] cursor-pointer" />
+      <Handbag className="hover:text-(--secondary-color) cursor-pointer" />
     </div>
   );
 };

@@ -9,7 +9,9 @@ const Pages = ({ total, url }: PagesProps) => {
           to={`${url}${i + 1}`}
           className={({ isActive }) =>
             `${
-              isActive ? "bg-[#974947] rounded-full size-6 shadow" : ""
+              isActive
+                ? "bg-(--secondary-color) rounded-full size-6 shadow"
+                : ""
             } transition-colors`
           }
           key={i}

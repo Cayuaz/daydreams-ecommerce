@@ -32,13 +32,16 @@ export const HeaderMobileMenu = () => {
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger>
-        <Menu className="hover:text-[#974947]" />
+        <Menu className="hover:text-(--secondary-color)" />
       </SheetTrigger>
-      <SheetContent className="bg-[#222224]">
+      <SheetContent className="bg-(--primary-color) text-white">
         <SheetHeader className="flex flex-col gap-4">
           <SheetTitle className="font-normal">
             <SheetClose asChild>
-              <Link to={"/"} className="hover:text-[#974947] hover:underline">
+              <Link
+                to={"/"}
+                className="hover:text-(--secondary-color) hover:underline"
+              >
                 Home
               </Link>
             </SheetClose>
@@ -47,7 +50,7 @@ export const HeaderMobileMenu = () => {
             <SheetClose asChild>
               <Link
                 to={"/About"}
-                className="hover:text-[#974947] hover:underline"
+                className="hover:text-(--secondary-color) hover:underline"
               >
                 Sobre
               </Link>

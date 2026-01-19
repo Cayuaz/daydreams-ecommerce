@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer className="bg-[#222224] text-white py-6 flex flex-col gap-4">
+    <footer className="bg-(--primary-color) text-white py-6 flex flex-col gap-4">
       <div className="px-8 flex flex-col gap-6">
         <div className="flex gap-2 border-2 border-white rounded-sm mx-auto items-center justify-between sm:w-3/6 px-4 py-2">
           <input

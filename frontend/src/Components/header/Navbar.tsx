@@ -38,7 +38,7 @@ const Navbar = () => {
             className={({ isActive }) =>
               `${
                 isActive ? "underline" : "text-white"
-              } hover:text-[#974947] transition-colors duration-300 ease-in-out`
+              } hover:text-(--secondary-color) transition-colors duration-300 ease-in-out`
             }
             onClick={handleClickSection}
           >
@@ -46,13 +46,13 @@ const Navbar = () => {
           </NavLink>
         </li>
         {/* About */}
-        <li className="hover:text-[#974947]">
+        <li>
           <NavLink
             to={"/About"}
             className={({ isActive }) =>
               `${
                 isActive ? "underline" : "text-white"
-              } hover:text-[#974947] transition-colors duration-300 ease-in-out`
+              } hover:text-(--secondary-color) transition-colors duration-300 ease-in-out`
             }
             onClick={handleClickSection}
           >
@@ -67,7 +67,7 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `${
                   isActive ? "underline" : "text-white"
-                } group-hover:text-[#974947] transition-colors duration-300 ease-in-out`
+                } group-hover:text-(--secondary-color) transition-colors duration-300 ease-in-out`
               }
               onClick={handleClickSection}
             >
@@ -76,7 +76,7 @@ const Navbar = () => {
             <ChevronDown
               className={`transition-transform, duration-300 ease-in-out, ${
                 rotate ? "rotate-180" : "rotate-0"
-              } group-hover:text-[#974947] size-5`}
+              } group-hover:text-(--secondary-color) size-5`}
               onClick={handleRotate}
             />
           </div>
