@@ -4,7 +4,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/Components/ui/accordion";
-import { Sheet } from "lucide-react";
 import { Link } from "react-router";
 import { SheetClose } from "../ui/sheet";
 
