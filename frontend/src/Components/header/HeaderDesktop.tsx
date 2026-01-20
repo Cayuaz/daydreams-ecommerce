@@ -1,8 +1,11 @@
 import { HandbagIcon, CircleUserIcon } from "lucide-react";
 import Navbar from "./Navbar";
 import SearchBar from "./SearchBar";
+import { useNavigate } from "react-router-dom";
 
 const HeaderDesktop = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="items-center hidden sm:flex sm:flex-col w-full px-8 py-4">
       {/*Container com a logo, barra de pesquisa e ícones */}
@@ -19,7 +22,7 @@ const HeaderDesktop = () => {
         />
 
         <div className="flex gap-3 justify-end">
-          <CircleUserIcon />
+          <CircleUserIcon onClick={() => navigate("/profile")} />
           <HandbagIcon />
         </div>
       </div>

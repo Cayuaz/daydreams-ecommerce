@@ -1,8 +1,11 @@
 import { CircleUser, Handbag } from "lucide-react";
 import { HeaderMobileMenu } from "./MenuMobile";
 import SearchBarMobile from "./SearchBarMobile";
+import { useNavigate } from "react-router-dom";
 
 const HeaderMobile = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="sm:hidden flex w-full justify-between items-center px-8">
       <div className="flex items-center gap-4">
@@ -15,7 +18,10 @@ const HeaderMobile = () => {
         className="w-50 h-30 mt-6"
       />
       <div className="flex items-center gap-4">
-        <CircleUser className="hover:text-(--secondary-color) cursor-pointer" />
+        <CircleUser
+          className="hover:text-(--secondary-color) cursor-pointer"
+          onClick={() => navigate("/profile")}
+        />
         <Handbag className="hover:text-(--secondary-color) cursor-pointer" />
       </div>
     </div>

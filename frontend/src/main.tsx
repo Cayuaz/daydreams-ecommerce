@@ -37,6 +37,10 @@ const router = createBrowserRouter([
         path: "auth/register",
         lazy: () => import("./routes/Register.tsx"),
       },
+      {
+        path: "/profile",
+        lazy: () => import("./routes/Profile.tsx"),
+      },
     ],
   },
 ]);

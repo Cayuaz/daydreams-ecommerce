@@ -38,10 +38,17 @@ const registerSchema = z.object({
   password: z.string().min(5).max(200),
 });
 
+const userSchema = registerSchema
+  .pick({ name: true, lastname: true, email: true })
+  .extend({
+    id: z.string(),
+  });
+
 // Types
 type ProductSchema = z.infer<typeof productSchema>;
 type ProductArraySchema = z.infer<typeof productArraySchema>;
 type ProductsAndTotalSchema = z.infer<typeof productsAndTotalSchema>;
+type UserSchema = z.infer<typeof userSchema>;
 
 export {
   productSchema,
@@ -50,7 +57,9 @@ export {
   loginSchema,
   authResponseSchema,
   registerSchema,
+  userSchema,
   type ProductArraySchema,
   type ProductSchema,
   type ProductsAndTotalSchema,
+  type UserSchema,
 };
