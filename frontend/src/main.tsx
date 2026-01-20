@@ -29,6 +29,11 @@ const router = createBrowserRouter([
         path: "/products/category/:categoryName/:pageNumber",
         lazy: () => import("./routes/ProductsByCategory.tsx"),
       },
+      {
+        path: "/auth/login",
+        lazy: () => import("./routes/Login.tsx"),
+      },
+      {},
     ],
   },
 ]);
