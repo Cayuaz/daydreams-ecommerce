@@ -27,7 +27,7 @@ export const loader = ({ request, params }: LoaderFunctionArgs) => {
   console.log("query:", q);
 
   const productsPromise = axiosInstance
-    .get(`/products?q=${q || ""}&page=${pageNumber || "1"}`, {
+    .get(`/products?q=${q || ""}&page=${pageNumber || "10"}`, {
       signal: request.signal,
     })
     .then((res) => {
@@ -97,7 +97,7 @@ export const Component = () => {
               {!resolvedProducts.products && <UnavailableProducts />}
               {/* Mensagem de produtos não encontrados */}
               {resolvedProducts.products.length === 0 && (
-                <p className="text-base text-(--secondary-color) font-bold">
+                <p className="text-base text-(--secondary-color) font-bold my-10">
                   Nenhum produto foi encontrado! Por favor utilize outra palavra
                   e tente novamente.
                 </p>

@@ -13,7 +13,10 @@ const HeaderDesktop = () => {
           className="w-40 h-30"
         />
 
-        <SearchBar />
+        <SearchBar
+          className="border text-black bg-white"
+          inputText="text-black"
+        />
 
         <div className="flex gap-3 justify-end">
           <CircleUserIcon />
