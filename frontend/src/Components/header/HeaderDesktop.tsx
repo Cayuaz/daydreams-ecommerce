@@ -5,7 +5,7 @@ import { Form } from "react-router-dom";
 const HeaderDesktop = () => {
   return (
     <div className="items-center hidden sm:flex sm:flex-col w-full px-8 py-4">
-      {/*COntainer com a logo, barra de pesquisa e ícones */}
+      {/*Container com a logo, barra de pesquisa e ícones */}
       <div className="grid grid-cols-[1fr_2fr_1fr] gap-6 items-center mx-auto w-full">
         <img
           src="../../../logo.svg"

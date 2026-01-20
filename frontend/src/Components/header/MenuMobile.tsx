@@ -32,7 +32,7 @@ export const HeaderMobileMenu = () => {
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger>
-        <Menu className="hover:text-(--secondary-color)" />
+        <Menu className="hover:text-(--secondary-color) cursor-pointer" />
       </SheetTrigger>
       <SheetContent className="bg-(--primary-color) text-white">
         <SheetHeader className="flex flex-col gap-4">
