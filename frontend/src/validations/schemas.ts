@@ -25,9 +25,17 @@ const loginSchema = z.object({
 });
 
 // Schema de resposta de login
-const loginResponseSchema = z.object({
+const authResponseSchema = z.object({
   userId: z.string(),
   token: z.string(),
+});
+
+// Schema de register
+const registerSchema = z.object({
+  name: z.string().min(3).max(60),
+  lastname: z.string().min(3).max(100),
+  email: z.email(),
+  password: z.string().min(5).max(200),
 });
 
 // Types
@@ -40,7 +48,8 @@ export {
   productArraySchema,
   productsAndTotalSchema,
   loginSchema,
-  loginResponseSchema,
+  authResponseSchema,
+  registerSchema,
   type ProductArraySchema,
   type ProductSchema,
   type ProductsAndTotalSchema,

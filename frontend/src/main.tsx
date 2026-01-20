@@ -33,7 +33,10 @@ const router = createBrowserRouter([
         path: "/auth/login",
         lazy: () => import("./routes/Login.tsx"),
       },
-      {},
+      {
+        path: "auth/register",
+        lazy: () => import("./routes/Register.tsx"),
+      },
     ],
   },
 ]);
