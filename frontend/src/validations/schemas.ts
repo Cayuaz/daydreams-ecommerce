@@ -38,10 +38,25 @@ const registerSchema = z.object({
   password: z.string().min(5).max(200),
 });
 
+// Schema de usuários
 const userSchema = registerSchema
   .pick({ name: true, lastname: true, email: true })
   .extend({
     id: z.string(),
+  });
+
+// Schema de produtos do carrinho
+
+const productCartSchema = productSchema
+  .pick({
+    id: true,
+    name: true,
+    price: true,
+    description: true,
+    imageUrl: true,
+  })
+  .extend({
+    size: z.string().min(1).max(1),
   });
 
 // Types
@@ -49,6 +64,7 @@ type ProductSchema = z.infer<typeof productSchema>;
 type ProductArraySchema = z.infer<typeof productArraySchema>;
 type ProductsAndTotalSchema = z.infer<typeof productsAndTotalSchema>;
 type UserSchema = z.infer<typeof userSchema>;
+type ProductCartSchema = z.infer<typeof productCartSchema>;
 
 export {
   productSchema,
@@ -58,8 +74,10 @@ export {
   authResponseSchema,
   registerSchema,
   userSchema,
+  productCartSchema,
   type ProductArraySchema,
   type ProductSchema,
   type ProductsAndTotalSchema,
   type UserSchema,
+  type ProductCartSchema,
 };
