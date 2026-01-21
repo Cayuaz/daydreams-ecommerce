@@ -66,11 +66,11 @@ export const Component = () => {
 
   return (
     <div className="my-15 flex flex-col gap-8">
-      <h1 className="text-base xl:text-xl">Login</h1>
+      <h1 className="text-base lg:text-lg xl:text-xl">Login</h1>
       <Form className="px-8 flex flex-col gap-8 items-center" method="post">
         {/* Email */}
         <div className="flex flex-col gap-2 w-full sm:w-3/5">
-          <label htmlFor="email" className="text-left">
+          <label htmlFor="email" className="text-left text-sm lg:text-base">
             EMAIL:
           </label>
           <input
@@ -79,13 +79,13 @@ export const Component = () => {
             placeholder="exemplo@gmail.com"
             id="email"
             minLength={3}
-            className="border border-gray-500 py-2 px-4 rounded-sm focus:outline-2 focus:outline-black"
+            className="border border-gray-500 py-2 px-4 rounded-sm focus:outline-2 focus:outline-black text-sm lg:text-base"
             required
           />
         </div>
         {/* Senha */}
         <div className="flex flex-col gap-2 w-full sm:w-3/5">
-          <label htmlFor="password" className="text-left">
+          <label htmlFor="password" className="text-left text-sm lg:text-base">
             PASSWORD:
           </label>
           <div className="border border-gray-500 rounded-sm relative">
@@ -95,7 +95,7 @@ export const Component = () => {
               placeholder="123456"
               id="password"
               minLength={5}
-              className="w-full h-full focus:outline-2 focus:outline-black py-2 px-4 rounded-sm"
+              className="w-full h-full focus:outline-2 focus:outline-black py-2 px-4 rounded-sm text-sm lg:text-base"
               required
             />
             <Eyes typeInput={typeInput} setTypeInput={setTypeInput} />
@@ -103,12 +103,12 @@ export const Component = () => {
         </div>
         {/* Mensagem de erro caso o login falhe */}
         {action === false && <FormErrorMsg />}
-        <Button type="submit" className="w-base sm:w-3/5">
+        <Button type="submit" className="w-full sm:w-3/5">
           LOGIN
         </Button>
       </Form>
       {/*Link para a página de registro */}
-      <span className="flex items-center mx-auto gap-2 border-b border-b-black">
+      <span className="flex items-center mx-auto gap-2 border-b border-b-black text-sm lg:text-base pb-1">
         Não tem uma conta? <Link to={"/auth/register"}>Criar conta</Link>
       </span>
     </div>
