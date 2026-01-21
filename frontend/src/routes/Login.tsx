@@ -10,6 +10,7 @@ import { useState } from "react";
 import Eyes from "@/Components/Eyes";
 import { authResponseSchema, loginSchema } from "@/validations/schemas";
 import { axiosInstance } from "@/lib/axios";
+import FormErrorMsg from "@/Components/FormErrorMsg";
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   //Dados do formulário
@@ -101,11 +102,7 @@ export const Component = () => {
           </div>
         </div>
         {/* Mensagem de erro caso o login falhe */}
-        {action === false && (
-          <p className="text-base text-(--secondary-color) -mt-4">
-            Dados incorretos. Por favor, tente novamente.
-          </p>
-        )}
+        {action === false && <FormErrorMsg />}
         <Button type="submit" className="w-base sm:w-3/5">
           LOGIN
         </Button>
