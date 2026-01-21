@@ -18,7 +18,7 @@ const HeaderDesktop = () => {
 
         <SearchBar
           className="border text-black bg-white"
-          inputText="text-black"
+          inputTextColor="text-black"
         />
 
         <div className="flex gap-3 justify-end">

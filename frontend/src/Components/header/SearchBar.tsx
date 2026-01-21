@@ -1,30 +1,49 @@
 import { Form } from "react-router-dom";
-import { Search } from "lucide-react";
+import { Search, X } from "lucide-react";
+import { useRef, useState } from "react";
 
 type SearchBarProps = {
   setOpen?: (open: boolean) => void;
   className: string;
-  inputText: string;
+  inputTextColor: string;
 };
 
-const SearchBar = ({ setOpen, className, inputText }: SearchBarProps) => {
+const SearchBar = ({ setOpen, className, inputTextColor }: SearchBarProps) => {
+  const [input, setInput] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // Função para limpar o input e focar nele
+  const handleInputClick = () => {
+    setInput("");
+    inputRef.current?.focus();
+  };
+
   return (
     <Form
       method="get"
       action="/products/page/1"
-      className={`flex gap-4 w-5/6 mx-auto items-center ${className} py-2 px-2 rounded-lg`}
+      className={`flex gap-4 w-5/6 mx-auto items-center ${className} py-2 px-2 rounded-lg relative`}
       onSubmit={() => setOpen!(false)}
     >
       <button type="submit">
-        <Search className="w-5" />
+        <Search className="w-5 text-[#545457]" />
       </button>
       <input
         type="text"
         name="q"
         placeholder="O que você está buscando?"
-        className={`outline-0 w-full text-left text-sm lg:text-base ${inputText} `}
+        value={input}
+        className={`outline-0 w-full text-left text-sm lg:text-base ${inputTextColor} `}
+        onChange={(e) => setInput(e.target.value)}
         required
+        ref={inputRef}
       />
+      {input && (
+        <X
+          className="absolute bottom-1/2 translate-1/2 right-5 size-4 text-[#545457] cursor-pointer"
+          onClick={handleInputClick}
+        />
+      )}
     </Form>
   );
 };

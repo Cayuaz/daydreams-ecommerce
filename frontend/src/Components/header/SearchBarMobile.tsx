@@ -41,7 +41,7 @@ const SearchBarMobile = () => {
             <SearchBar
               setOpen={setIsOpen}
               className="border border-white/50 text-white bg-none"
-              inputText="text-white"
+              inputTextColor="text-white"
             />
           </SheetDescription>
         </SheetHeader>
