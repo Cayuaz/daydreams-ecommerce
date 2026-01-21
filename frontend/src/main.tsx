@@ -41,6 +41,10 @@ const router = createBrowserRouter([
         path: "/profile",
         lazy: () => import("./routes/Profile.tsx"),
       },
+      {
+        path: "/shop-cart",
+        lazy: () => import("./routes/ShopCart.tsx"),
+      },
     ],
   },
 ]);

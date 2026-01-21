@@ -23,7 +23,7 @@ const HeaderDesktop = () => {
 
         <div className="flex gap-3 justify-end">
           <CircleUserIcon onClick={() => navigate("/profile")} />
-          <HandbagIcon />
+          <HandbagIcon onClick={() => navigate("/shop-cart")} />
         </div>
       </div>
       {/*Navbar: Home, Sobre e Produtos */}

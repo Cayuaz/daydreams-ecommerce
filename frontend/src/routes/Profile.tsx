@@ -94,7 +94,11 @@ export const Component = () => {
           )}
         </Await>
       </Suspense>
-      <Button className="w-fit px-10" click={() => navigate("/")}>
+      <Button
+        className="w-fit px-10"
+        click={() => navigate("/")}
+        padding="py-1"
+      >
         VOLTAR
       </Button>
     </div>

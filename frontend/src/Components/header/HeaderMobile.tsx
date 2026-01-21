@@ -22,7 +22,10 @@ const HeaderMobile = () => {
           className="hover:text-(--secondary-color) cursor-pointer"
           onClick={() => navigate("/profile")}
         />
-        <Handbag className="hover:text-(--secondary-color) cursor-pointer" />
+        <Handbag
+          className="hover:text-(--secondary-color) cursor-pointer"
+          onClick={() => navigate("/shop-cart")}
+        />
       </div>
     </div>
   );
