@@ -57,6 +57,7 @@ const productCartSchema = productSchema
   })
   .extend({
     size: z.string().min(1).max(1),
+    qtd: z.number().min(1),
   });
 
 // Types

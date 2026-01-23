@@ -15,7 +15,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
   const buyProduct = () => {
     if (selectedSize) {
-      addItem({ ...product, size: selectedSize });
+      addItem({ ...product, size: selectedSize, qtd: 0 });
+      console.log("Item add");
     }
   };
 

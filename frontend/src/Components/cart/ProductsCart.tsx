@@ -13,9 +13,9 @@ const CartProducts = () => {
         <span className="hidden sm:block">Quantidade</span>
         <span>Preço</span>
       </div>
-      <div className="border-y border-y-gray-500 py-6 px-4 flex flex-col items-center justify-between w-full">
+      <div className="border-y border-y-gray-500 py-6 px-4 flex flex-col items-center justify-between w-full gap-4">
         {Cart.map((product) => (
-          <div className="grid grid-cols-2 sm:grid-cols-3 items-center">
+          <div className="grid grid-cols-2 sm:grid-cols-3 items-center gap-2">
             {/* Imagem e nome do produto */}
             <div className="flex flex-col items-center gap-3">
               <span className="text-lg">{product.name}</span>
@@ -25,10 +25,20 @@ const CartProducts = () => {
                 className="w-4/5 sm:w-3/5 xl:w-2/5 hover:scale-105 transition-transform"
               />
               {/* Em dispositivos móveis a coluna de quantidade deixa de ser exibida e o componente é exibido aqui */}
-              <ProductQuantity className="flex sm:hidden" value={1} />
+              <ProductQuantity
+                id={product.id}
+                size={product.size}
+                value={product.qtd}
+                className="flex sm:hidden"
+              />
             </div>
             {/* Quantidade do produto  */}
-            <ProductQuantity className="hidden sm:flex" value={1} />
+            <ProductQuantity
+              id={product.id}
+              size={product.size}
+              value={product.qtd}
+              className="hidden sm:flex"
+            />
             {/* Detalhes do produto */}
             <div className="flex flex-col gap-3 items-center">
               <Trash className=" size-5 ml-14 hover:text-(--secondary-color) transition-colors" />
