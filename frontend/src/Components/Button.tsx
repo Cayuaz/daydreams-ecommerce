@@ -20,7 +20,7 @@ const Button = ({
   return (
     <button
       type={type || "button"}
-      className={`w-3/5 ${padding || "py-2"} text-sm rounded-sm bg-[#222224] hover:bg-[#323235] text-white transition-colors ${className} disabled:opacity-50`}
+      className={`w-3/5 ${padding || "py-2"} text-sm rounded-sm bg-[#222224] hover:bg-[#323235] text-white transition-colors uppercase ${className} disabled:opacity-50`}
       disabled={disabled}
       onClick={() => click && click()}
     >

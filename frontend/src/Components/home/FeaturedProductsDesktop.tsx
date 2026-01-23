@@ -85,7 +85,7 @@ const FeaturedProductsDesktop = ({
             <span className="text-sm font-bold">
               {formPrice(product.price)}
             </span>
-            <Button>COMPRAR</Button>
+            <Button>comprar</Button>
           </div>
         ))}
       </div>

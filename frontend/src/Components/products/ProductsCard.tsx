@@ -1,15 +1,15 @@
 import type { ProductSchema } from "@/validations/schemas";
-import Button from "../Button";
 import { formPrice } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
+import BuyMenu from "../cart/BuyMenu";
+import Button from "../Button";
 
 type ProductCardProps = {
   product: ProductSchema;
   imgWidth: string;
-  btn: boolean;
 };
 
-const ProductsCard = ({ product, imgWidth, btn }: ProductCardProps) => {
+const ProductsCard = ({ product, imgWidth }: ProductCardProps) => {
   const navigate = useNavigate();
 
   // Componente de card de produtos
@@ -26,7 +26,9 @@ const ProductsCard = ({ product, imgWidth, btn }: ProductCardProps) => {
       />
       <span className="text-sm sm:text-base">{product.name}</span>
       <span className="text-sm font-bold">{formPrice(product.price)}</span>
-      {btn && <Button>COMPRAR</Button>}
+
+      <BuyMenu product={product} />
+      <Button className="hidden sm:block">COMPRAR</Button>
     </div>
   );
 };
