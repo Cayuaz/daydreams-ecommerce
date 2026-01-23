@@ -1,5 +1,5 @@
 import Button from "@/Components/Button";
-import CartProducts from "@/Components/cart/CartProducts";
+import CartProducts from "@/Components/cart/ProductsCart";
 import { useCartStore } from "@/stores/useCartStore";
 import { CircleAlert } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,7 @@ export const Component = () => {
   const { Cart } = useCartStore();
 
   return (
-    <div className="my-10 flex flex-col gap-8 w-full mx-auto">
+    <div className="my-10 flex flex-col gap-8 w-full ">
       <h1
         className="w-fit border-b-2 border-black text-base lg:text-lg xl:text-xl ml-8"
         onClick={() => console.log(Cart)}
