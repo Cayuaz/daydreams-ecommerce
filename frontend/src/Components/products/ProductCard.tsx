@@ -4,12 +4,20 @@ import { useState } from "react";
 import { Separator } from "../ui/separator";
 import Button from "../Button";
 import Size from "./Size";
+import { useCartStore } from "@/stores/useCartStore";
 
 type ProductCardProps = { product: ProductSchema };
 
 const ProductCard = ({ product }: ProductCardProps) => {
   //Size vai conter o tamanho selecionado, e no Size component vai ser verificado qual botão está selecionado
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const { addItem } = useCartStore();
+
+  const buyProduct = () => {
+    if (selectedSize) {
+      addItem({ ...product, size: selectedSize });
+    }
+  };
 
   return (
     <>
@@ -34,7 +42,11 @@ const ProductCard = ({ product }: ProductCardProps) => {
         {/* Componente de tamanho */}
         <Size selectedSize={selectedSize} setSelectedSize={setSelectedSize} />
         {/* Botão de comprar */}
-        <Button className="w-full" disabled={selectedSize ? false : true}>
+        <Button
+          className="w-full"
+          disabled={selectedSize ? false : true}
+          click={buyProduct}
+        >
           COMPRAR
         </Button>
       </div>
