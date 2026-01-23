@@ -3,6 +3,7 @@ import { formPrice } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
 import BuyMenu from "../cart/BuyMenu";
 import Button from "../Button";
+import { useProductStore } from "@/stores/useProductStore";
 
 type ProductCardProps = {
   product: ProductSchema;
@@ -11,6 +12,11 @@ type ProductCardProps = {
 
 const ProductsCard = ({ product, imgWidth }: ProductCardProps) => {
   const navigate = useNavigate();
+  const { setProduct } = useProductStore();
+
+  const handleAddProduct = () => {
+    setProduct(product);
+  };
 
   // Componente de card de produtos
   return (
@@ -28,7 +34,9 @@ const ProductsCard = ({ product, imgWidth }: ProductCardProps) => {
       <span className="text-sm font-bold">{formPrice(product.price)}</span>
 
       <BuyMenu product={product} />
-      <Button className="hidden sm:block">COMPRAR</Button>
+      <Button className="hidden sm:block" click={handleAddProduct}>
+        COMPRAR
+      </Button>
     </div>
   );
 };

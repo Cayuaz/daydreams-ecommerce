@@ -3,9 +3,11 @@ import "./App.css";
 import { Header } from "./Components/header/Header";
 import { Footer } from "./Components/Footer";
 import { Suspense, useEffect } from "react";
+import BuyDesktopMenu from "./Components/cart/BuyDesktopMenu";
+// import { useProductStore } from "./stores/useProductStore";
 
 function App() {
-  // const navigation = useNavigation();
+  // const { product } = useProductStore();
 
   useEffect(() => {
     // O %c avisa que o texto a seguir terá estilo CSS
@@ -23,7 +25,8 @@ function App() {
       <Header />
       <Suspense>
         <main className="h-full border-2 border-black">
-          {/* {navigation.state === "loading" && <p>Carregando...</p>} */}
+          <BuyDesktopMenu />
+
           <Outlet />
         </main>
       </Suspense>
