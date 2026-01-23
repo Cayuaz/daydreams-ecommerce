@@ -1,16 +1,17 @@
 import { formPrice } from "@/lib/utils";
 import type { ProductSchema } from "@/validations/schemas";
-import { useState } from "react";
 import { Separator } from "../ui/separator";
 import Button from "../Button";
 import Size from "./Size";
 import { useCartStore } from "@/stores/useCartStore";
+import { useSizeStore } from "@/stores/useSizeStore";
 
 type ProductCardProps = { product: ProductSchema };
 
 const ProductCard = ({ product }: ProductCardProps) => {
-  //Size vai conter o tamanho selecionado, e no Size component vai ser verificado qual botão está selecionado
-  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  //State global dos tamanhos dos produtos [P, M, G e GG]
+  const { selectedSize } = useSizeStore();
+  //State global do carrinho de compras
   const { addItem } = useCartStore();
 
   const buyProduct = () => {
@@ -40,8 +41,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </div>
         <p className="text-left text-sm">{product.description}</p>
         <Separator orientation="horizontal" className="bg-black " />
-        {/* Componente de tamanho */}
-        <Size selectedSize={selectedSize} setSelectedSize={setSelectedSize} />
+        {/* Componente dos tamanhos dos produtos */}
+        <Size />
         {/* Botão de comprar */}
         <Button
           className="w-full"

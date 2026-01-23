@@ -4,6 +4,7 @@ import { Trash } from "lucide-react";
 import { formPrice } from "@/lib/utils";
 
 const CartProducts = () => {
+  //State global do carrinho de compras
   const { Cart } = useCartStore();
 
   return (
@@ -13,11 +14,11 @@ const CartProducts = () => {
         <span className="hidden sm:block">Quantidade</span>
         <span>Preço</span>
       </div>
-      <div className="border-y border-y-gray-500 py-6 px-4 flex flex-col items-center justify-between w-full gap-4">
+      <div className="border-y border-y-gray-500 py-6 px-4 flex flex-col items-center justify-between w-full gap-6">
         {Cart.map((product) => (
-          <div className="grid grid-cols-2 sm:grid-cols-3 items-center gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 items-center gap-1">
             {/* Imagem e nome do produto */}
-            <div className="flex flex-col items-center gap-3">
+            <div className="flex flex-col items-center gap-1 sm:gap-0">
               <span className="text-lg">{product.name}</span>
               <img
                 src={product.imageUrl}

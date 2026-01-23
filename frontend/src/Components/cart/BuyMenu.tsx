@@ -11,14 +11,18 @@ import Size from "../products/Size";
 import { useEffect, useState } from "react";
 import type { ProductSchema } from "@/validations/schemas";
 import { useCartStore } from "@/stores/useCartStore";
+import { useSizeStore } from "@/stores/useSizeStore";
 
 type BuyMenuProps = {
   product: ProductSchema;
 };
 
 const BuyMenu = ({ product }: BuyMenuProps) => {
-  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  //State global dos tamanhos dos produtos [P, M, G e GG]
+  const { selectedSize, setSelectedSize } = useSizeStore();
+  //State do componente sheet do shadcn/ui
   const [isOpen, setIsOpen] = useState(false);
+  //State global do carrinho de compras
   const { addItem } = useCartStore();
 
   //Utiliza o método do useCartStore para adicionar um novo item ao carrinho de compras
@@ -27,6 +31,7 @@ const BuyMenu = ({ product }: BuyMenuProps) => {
       addItem({ ...product, size: selectedSize, qtd: 0 });
       console.log("Item add");
       setIsOpen(false);
+      setSelectedSize(null);
     }
   };
 
@@ -61,19 +66,19 @@ const BuyMenu = ({ product }: BuyMenuProps) => {
           className="bg-(--primary-color) text-white border-0 h-2/5"
         >
           <SheetHeader className="flex flex-col gap-4">
+            {/* Nome do produto */}
             <SheetTitle className="font-normal text-xl">
               {product.name}
             </SheetTitle>
+            {/* Preço do produto */}
             <SheetTitle className="font-normal text-sm">
               {formPrice(product.price)}
             </SheetTitle>
-            <div>
-              <Size
-                selectedSize={selectedSize}
-                setSelectedSize={setSelectedSize}
-                className=" text-white border-white"
-              />
-            </div>
+
+            {/* Componente dos tamanhos dos produtos */}
+            <Size className=" text-white border-white" />
+
+            {/* Botão com o evento de adicionar um item ao carrinho de compras */}
             <button
               type="submit"
               className={`${selectedSize ? "disabled:opacity-100" : "disabled:opacity-50"} uppercase text-sm flex bg-black w-fit px-6 py-2 rounded-sm hover:bg-[#0d0d0d]`}

@@ -1,12 +1,15 @@
+import { useSizeStore } from "@/stores/useSizeStore";
+
 const sizes = ["P", "M", "G", "GG"];
 
 type SizeProps = {
-  selectedSize: string | null;
-  setSelectedSize: (size: string | null) => void;
   className?: string;
 };
 
-const Size = ({ selectedSize, setSelectedSize, className }: SizeProps) => {
+const Size = ({ className }: SizeProps) => {
+  //State global dos tamanhos dos produtos [P, M, G e GG]
+  const { selectedSize, setSelectedSize } = useSizeStore();
+
   return (
     <div className="flex flex-col gap-4 items-start ">
       <span>Tamanho</span>
