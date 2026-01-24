@@ -4,7 +4,7 @@ import { type ProductCartSchema } from "@/validations/schemas";
 
 type CartStore = {
   Cart: ProductCartSchema[];
-  addItem: (item: ProductCartSchema) => void;
+  addProduct: (item: ProductCartSchema) => void;
   increment: (id: string, size: string) => void;
   decrement: (id: string, size: string) => void;
 };
@@ -14,7 +14,7 @@ export const useCartStore = create<CartStore>()(
     (set, get) => ({
       Cart: [],
       //Método para adicionar produtos/itens no carrinho de compras
-      addItem: (item) => {
+      addProduct: (item) => {
         const Cart = get().Cart;
         //Verifica se o novo produto já está no carrinho
         const isItemExists = Cart.find(

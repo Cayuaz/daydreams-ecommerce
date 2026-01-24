@@ -10,8 +10,8 @@ import { formPrice } from "@/lib/utils";
 import Size from "../products/Size";
 import { useEffect, useState } from "react";
 import type { ProductSchema } from "@/validations/schemas";
-import { useCartStore } from "@/stores/useCartStore";
 import { useSizeStore } from "@/stores/useSizeStore";
+import { useAddProduct } from "../../hooks/useAddProduct";
 
 type BuyMenuProps = {
   product: ProductSchema;
@@ -22,14 +22,13 @@ const BuyMenu = ({ product }: BuyMenuProps) => {
   const { selectedSize, setSelectedSize } = useSizeStore();
   //State do componente sheet do shadcn/ui
   const [isOpen, setIsOpen] = useState(false);
-  //State global do carrinho de compras
-  const { addItem } = useCartStore();
+  // Custom Hook que cuida de executar a ação de adicionar um item ao carrinho e de mostrar o componente de item adicionado
+  const execute = useAddProduct();
 
-  //Utiliza o método do useCartStore para adicionar um novo item ao carrinho de compras
+  //Utiliza o método do useAddItem para adicionar um novo item ao carrinho de compras
   const buyProduct = () => {
     if (selectedSize) {
-      addItem({ ...product, size: selectedSize, qtd: 0 });
-      console.log("Item add");
+      execute({ ...product, size: selectedSize, qtd: 0 });
       setIsOpen(false);
       setSelectedSize(null);
     }

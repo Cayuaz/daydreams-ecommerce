@@ -5,12 +5,12 @@ import { formPrice } from "@/lib/utils";
 import Size from "../products/Size";
 import { X } from "lucide-react";
 import { useEffect } from "react";
-import { useCartStore } from "@/stores/useCartStore";
+import { useAddProduct } from "@/hooks/useAddProduct";
 
 const BuyDesktopMenu = () => {
   const { selectedSize, setSelectedSize } = useSizeStore();
   const { product, setProduct } = useProductStore();
-  const { addItem } = useCartStore();
+  const execute = useAddProduct();
 
   //Fecha o menu
   const closeMenu = () => {
@@ -21,7 +21,7 @@ const BuyDesktopMenu = () => {
   //Utiliza o método do useCartStore para adicionar um novo item ao carrinho de compras
   const buyProduct = () => {
     if (selectedSize && product) {
-      addItem({ ...product, size: selectedSize, qtd: 0 });
+      execute({ ...product, size: selectedSize, qtd: 0 });
       closeMenu();
     }
   };

@@ -4,11 +4,9 @@ import { Header } from "./Components/header/Header";
 import { Footer } from "./Components/Footer";
 import { Suspense, useEffect } from "react";
 import BuyDesktopMenu from "./Components/cart/BuyDesktopMenu";
-// import { useProductStore } from "./stores/useProductStore";
+import AddedProduct from "./Components/cart/AddedProduct";
 
 function App() {
-  // const { product } = useProductStore();
-
   useEffect(() => {
     // O %c avisa que o texto a seguir terá estilo CSS
     const msg = "%c DAYDREAMS \n %c Dreamt and Built by Cayuã";
@@ -26,7 +24,7 @@ function App() {
       <Suspense>
         <main className="h-full border-2 border-black">
           <BuyDesktopMenu />
-
+          <AddedProduct />
           <Outlet />
         </main>
       </Suspense>

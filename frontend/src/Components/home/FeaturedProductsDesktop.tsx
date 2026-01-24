@@ -1,9 +1,10 @@
-import type { ProductArraySchema } from "@/validations/schemas";
+import type { ProductArraySchema, ProductSchema } from "@/validations/schemas";
 import { formPrice } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import Button from "../Button";
 import { useNavigate } from "react-router-dom";
+import { useProductStore } from "@/stores/useProductStore";
 
 type FeaturedProductsDesktopProps = {
   products: ProductArraySchema;
@@ -15,6 +16,11 @@ const FeaturedProductsDesktop = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemsPerPage = 4;
   const navigate = useNavigate();
+  const { setProduct } = useProductStore();
+
+  const handleAddProduct = (product: ProductSchema) => {
+    setProduct(product);
+  };
 
   // o "|| 1" evita erro de divisão por zero se não houver produtos
   //8 produtos: 8 / 4 = 2
@@ -85,7 +91,7 @@ const FeaturedProductsDesktop = ({
             <span className="text-sm font-bold">
               {formPrice(product.price)}
             </span>
-            <Button>comprar</Button>
+            <Button click={() => handleAddProduct(product)}>comprar</Button>
           </div>
         ))}
       </div>

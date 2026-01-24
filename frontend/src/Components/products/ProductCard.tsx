@@ -12,11 +12,11 @@ const ProductCard = ({ product }: ProductCardProps) => {
   //State global dos tamanhos dos produtos [P, M, G e GG]
   const { selectedSize } = useSizeStore();
   //State global do carrinho de compras
-  const { addItem } = useCartStore();
+  const { addProduct } = useCartStore();
 
   const buyProduct = () => {
     if (selectedSize) {
-      addItem({ ...product, size: selectedSize, qtd: 0 });
+      addProduct({ ...product, size: selectedSize, qtd: 0 });
       console.log("Item add");
     }
   };
