@@ -9,8 +9,11 @@ import { useAddProduct } from "@/hooks/useAddProduct";
 import { motion, AnimatePresence } from "framer-motion";
 
 const BuyDesktopMenu = () => {
+  //State global dos tamanhos dos produtos [P, M, G e GG]
   const { selectedSize, setSelectedSize } = useSizeStore();
+  //State global com os dados do produto que o usuário clicou para comprar
   const { product, setProduct } = useProductStore();
+  // Custom Hook que cuida de executar a ação de adicionar um item ao carrinho e de mostrar o componente de item adicionado
   const execute = useAddProduct();
 
   //Fecha o menu
@@ -26,6 +29,22 @@ const BuyDesktopMenu = () => {
       closeMenu();
     }
   };
+
+  //Verifica a largura da tela e utiliza a função closeMenu caso a tela seja menor que 640px
+  //Isso evita que o menu permaneça aberto mesmo depois da tela aumentar de tamanho
+  useEffect(() => {
+    const handleResize = () => {
+      const currentWidth = innerWidth;
+
+      if (currentWidth < 640) {
+        closeMenu();
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  });
 
   //Desativa a barra de scroll quando o menu está aberto
   useEffect(() => {

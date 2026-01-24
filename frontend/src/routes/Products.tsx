@@ -3,11 +3,12 @@ import ProductsCard from "@/Components/products/ProductsCard";
 import { SkeletonProducts } from "@/Components/products/SkeletonProducts";
 import UnavailableProducts from "@/Components/products/UnavailableProducts";
 import { axiosInstance } from "@/lib/axios";
+import { useAddedProductStore } from "@/stores/useAddedProductStore";
 import {
   productsAndTotalSchema,
   type ProductsAndTotalSchema,
 } from "@/validations/schemas";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import {
   Await,
   useLoaderData,
@@ -53,6 +54,12 @@ export const Component = () => {
   const { products } = useLoaderData() as {
     products: Promise<ProductsAndTotalSchema>;
   };
+  const { setAddedProduct } = useAddedProductStore();
+
+  //Limpa o state com o produto que foi adicionado ao carrinho
+  useEffect(() => {
+    return () => setAddedProduct(null);
+  }, [setAddedProduct]);
 
   //Como existem componentes que dependem da query de busca, é necessário obtê-la aqui também, já que essa rota serve tanto para a listagem de produtos quanto para os resultados de busca
   const [searchParams] = useSearchParams();
@@ -87,7 +94,6 @@ export const Component = () => {
                     <ProductsCard
                       product={product}
                       imgWidth="w-4/6"
-                      btn={true}
                       key={product.id}
                     />
                   ))}

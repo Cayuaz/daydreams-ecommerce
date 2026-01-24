@@ -9,8 +9,9 @@ import {
   productArraySchema,
   type ProductArraySchema,
 } from "@/validations/schemas";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { Await, useLoaderData } from "react-router-dom";
+import { useAddedProductStore } from "@/stores/useAddedProductStore";
 
 //
 export const loader = () => {
@@ -39,7 +40,13 @@ export const Component = () => {
   const { products } = useLoaderData() as {
     products: Promise<ProductArraySchema>;
   };
-  console.log(products);
+
+  const { setAddedProduct } = useAddedProductStore();
+
+  //Limpa o state com o produto que foi adicionado ao carrinho
+  useEffect(() => {
+    return () => setAddedProduct(null);
+  }, [setAddedProduct]);
 
   return (
     <div>

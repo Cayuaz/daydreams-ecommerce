@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 const AddedProduct = () => {
+  //State global do produto que foi adicionado ao carrinho
   const { addedProduct, setAddedProduct } = useAddedProductStore();
   const navigate = useNavigate();
 

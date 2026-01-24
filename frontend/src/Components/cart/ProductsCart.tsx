@@ -2,10 +2,12 @@ import { useCartStore } from "@/stores/useCartStore";
 import ProductQuantity from "./ProductQuantity";
 import { Trash } from "lucide-react";
 import { formPrice } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
 
 const CartProducts = () => {
   //State global do carrinho de compras
   const { Cart, removeProduct } = useCartStore();
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -24,6 +26,7 @@ const CartProducts = () => {
                 src={product.imageUrl}
                 alt="Produto do carrinho"
                 className="w-4/5 sm:w-3/5 xl:w-2/5 hover:scale-105 transition-transform"
+                onClick={() => navigate(`/products/${product.id}`)}
               />
               {/* Em dispositivos móveis a coluna de quantidade deixa de ser exibida e o componente é exibido aqui */}
               <ProductQuantity

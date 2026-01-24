@@ -6,12 +6,13 @@ import Size from "./Size";
 
 import { useSizeStore } from "@/stores/useSizeStore";
 import { useAddProduct } from "@/hooks/useAddProduct";
+import { useEffect } from "react";
 
 type ProductCardProps = { product: ProductSchema };
 
 const ProductCard = ({ product }: ProductCardProps) => {
   //State global dos tamanhos dos produtos [P, M, G e GG]
-  const { selectedSize } = useSizeStore();
+  const { selectedSize, setSelectedSize } = useSizeStore();
   //State global do carrinho de compras
   const execute = useAddProduct();
 
@@ -21,6 +22,11 @@ const ProductCard = ({ product }: ProductCardProps) => {
       console.log("Item add");
     }
   };
+
+  //Reseta o size quando o usuário sai da página
+  useEffect(() => {
+    return () => setSelectedSize(null);
+  }, [setSelectedSize]);
 
   return (
     <>

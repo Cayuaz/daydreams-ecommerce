@@ -14,6 +14,7 @@ const ProductsCard = ({ product, imgWidth }: ProductCardProps) => {
   const navigate = useNavigate();
   const { setProduct } = useProductStore();
 
+  //Ativa o state referente ao menu de compra de produtos desktop
   const handleAddProduct = () => {
     setProduct(product);
   };
@@ -33,7 +34,9 @@ const ProductsCard = ({ product, imgWidth }: ProductCardProps) => {
       <span className="text-sm sm:text-base">{product.name}</span>
       <span className="text-sm font-bold">{formPrice(product.price)}</span>
 
+      {/* Menu de compras mobile */}
       <BuyMenu product={product} />
+      {/* Botão com a função que ativa o state com os dados do produto que o usuário clicou para comprar */}
       <Button className="hidden sm:block" click={handleAddProduct}>
         COMPRAR
       </Button>

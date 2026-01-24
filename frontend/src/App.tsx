@@ -23,7 +23,9 @@ function App() {
       <Header />
       <Suspense>
         <main className="h-full border-2 border-black">
+          {/* Menu de compra de produtos desktop (inclui o tamanho e nome do produto) */}
           <BuyDesktopMenu />
+          {/* COmponente que mostra detalhes do produto adicionado ao carrinho */}
           <AddedProduct />
           <Outlet />
         </main>
