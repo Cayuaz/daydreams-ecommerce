@@ -3,8 +3,9 @@ import type { ProductSchema } from "@/validations/schemas";
 import { Separator } from "../ui/separator";
 import Button from "../Button";
 import Size from "./Size";
-import { useCartStore } from "@/stores/useCartStore";
+
 import { useSizeStore } from "@/stores/useSizeStore";
+import { useAddProduct } from "@/hooks/useAddProduct";
 
 type ProductCardProps = { product: ProductSchema };
 
@@ -12,11 +13,11 @@ const ProductCard = ({ product }: ProductCardProps) => {
   //State global dos tamanhos dos produtos [P, M, G e GG]
   const { selectedSize } = useSizeStore();
   //State global do carrinho de compras
-  const { addProduct } = useCartStore();
+  const execute = useAddProduct();
 
   const buyProduct = () => {
     if (selectedSize) {
-      addProduct({ ...product, size: selectedSize, qtd: 0 });
+      execute({ ...product, size: selectedSize, qtd: 0 });
       console.log("Item add");
     }
   };
