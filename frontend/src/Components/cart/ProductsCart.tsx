@@ -5,7 +5,7 @@ import { formPrice } from "@/lib/utils";
 
 const CartProducts = () => {
   //State global do carrinho de compras
-  const { Cart } = useCartStore();
+  const { Cart, removeProduct } = useCartStore();
 
   return (
     <div>
@@ -42,7 +42,10 @@ const CartProducts = () => {
             />
             {/* Detalhes do produto */}
             <div className="flex flex-col gap-3 items-center">
-              <Trash className=" size-5 ml-14 hover:text-(--secondary-color) transition-colors" />
+              <Trash
+                className=" size-5 ml-14 hover:text-(--secondary-color) transition-colors"
+                onClick={() => removeProduct(product.id, product.size)}
+              />
               <span>{formPrice(product.price)}</span>
               <p>
                 Tamanho: <span className="font-bold">{product.size}</span>

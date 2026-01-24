@@ -9,7 +9,9 @@ export const Component = () => {
   const { Cart } = useCartStore();
 
   return (
-    <div className="my-10 flex flex-col gap-8 w-full ">
+    <div
+      className={`my-10 flex flex-col gap-8 w-full ${Cart.length === 0 && "w-full px-8 sm:w-4/5 lg:w-3/5 mx-auto"}`}
+    >
       <h1
         className="w-fit border-b-2 border-black text-base lg:text-lg xl:text-xl ml-8"
         onClick={() => console.log(Cart)}
@@ -19,7 +21,7 @@ export const Component = () => {
       {/* <span className="text-left text-sm">Dados pessoais</span> */}
 
       {Cart.length === 0 && (
-        <div className="border border-gray-500 rounded-md py-6 px-4 flex gap-2 justify-center items-center text-sm text-black">
+        <div className="mx-8 border border-gray-500 rounded-md py-6 px-4 flex gap-2 justify-center items-center text-sm text-black">
           <CircleAlert className="size-5" />
           <p>Seu carrinho está vazio!</p>
         </div>

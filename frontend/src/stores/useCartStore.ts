@@ -5,6 +5,7 @@ import { type ProductCartSchema } from "@/validations/schemas";
 type CartStore = {
   Cart: ProductCartSchema[];
   addProduct: (item: ProductCartSchema) => void;
+  removeProduct: (id: string, size: string) => void;
   increment: (id: string, size: string) => void;
   decrement: (id: string, size: string) => void;
 };
@@ -39,6 +40,14 @@ export const useCartStore = create<CartStore>()(
         set((state) => ({ Cart: [...state.Cart, { ...item, qtd: 1 }] }));
         return;
       },
+      //Método para remover um produto do carrinho de compras
+      removeProduct: (id, size) =>
+        set((state) => ({
+          Cart: state.Cart.filter(
+            //O produto precisa ter o ID ou Size diferentes para passar no filter
+            (product) => product.id !== id || product.size !== size,
+          ),
+        })),
       //Método para aumentar o quantidade de um produto
       increment: (id, size) =>
         set((state) => ({

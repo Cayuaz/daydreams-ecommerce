@@ -69,7 +69,6 @@ export const Component = () => {
                     <ProductsCard
                       product={product}
                       imgWidth="w-4/6"
-                      btn={true}
                       key={product.id}
                     />
                   ))}
