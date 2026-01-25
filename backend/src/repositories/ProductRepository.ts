@@ -1,12 +1,13 @@
 import { Product } from "../entities/Product.js";
 import { prisma } from "../lib/prisma.js";
+import { normalizeSchema } from "../validations/schemas.js";
 import type { IProductRepository } from "./IProductRepository.js";
 
 //Mapeia a query string para palavras-chave relevantes
 const getKeyWords = (query: string) => {
   const words = {
-    camisetas: ["camiseta", "t-shirt"],
-    calcas: ["calça", "pants", "jeans"],
+    camiseta: ["camiseta", "t-shirt"],
+    calca: ["calça", "pants", "jeans"],
     "jorts-shorts": ["bermuda", "shorts", "short", "jorts"],
     casacos: ["casaco", "moletom", "jacket", "hoodie"],
     acessorios: ["acessório", "touca", "boné", "meia"],
@@ -19,7 +20,9 @@ export class ProductRepository implements IProductRepository {
   //Retorna os 10 primeiros produtos que contenham a query no name (se a query estiver vazia retorna todos os produtos)
   //Pula os produtos conforme a página atual, se for a página for 2, vai pular 10
   async getProducts(query: string, pageSize: number, currentPage: number) {
-    const keywords = getKeyWords(query);
+    const normalizeQuery = normalizeSchema.parse(query);
+    console.log(normalizeQuery);
+    const keywords = getKeyWords(normalizeQuery);
 
     const productsData = await prisma.product.findMany({
       // ajusta a busca dos produtos para considerar todas as palavras-chave, o or faz uma busca com cada palavra dentro do array
