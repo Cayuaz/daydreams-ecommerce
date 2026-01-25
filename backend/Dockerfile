@@ -23,4 +23,4 @@ RUN npm run build
 # Inicia o migrate do prisma e a aplicação
 CMD ["sh", "-c", "npx prisma migrate deploy && npm start"]
 
-EXPOSE 3000
+EXPOSE 10000
