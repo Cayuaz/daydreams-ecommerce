@@ -22,7 +22,7 @@ const SearchBar = ({ setOpen, className, inputTextColor }: SearchBarProps) => {
     <Form
       method="get"
       action="/products/page/1"
-      className={`flex gap-4 w-5/6 mx-auto items-center ${className} py-2 px-2 rounded-lg relative`}
+      className={`flex gap-4 w-5/6 sm:w-full lg:w-4/6 mx-auto items-center ${className} py-2 px-2 rounded-lg relative`}
       onSubmit={() => setOpen!(false)}
     >
       <button type="submit">

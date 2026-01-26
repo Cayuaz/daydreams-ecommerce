@@ -7,14 +7,10 @@ const HeaderDesktop = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="items-center hidden sm:flex sm:flex-col w-full px-8 py-4">
+    <div className="items-center hidden sm:flex sm:flex-col w-full px-8 py-4 lg:w-5/6 lg:mx-auto lg:px-0">
       {/*Container com a logo, barra de pesquisa e ícones */}
       <div className="grid grid-cols-[1fr_2fr_1fr] gap-6 items-center mx-auto w-full">
-        <img
-          src="../../../logo.svg"
-          alt="Daydreams logo"
-          className="w-40 h-30"
-        />
+        <img src="/logo-v4.svg" alt="Daydreams logo" className="w-30 h-30" />
 
         <SearchBar
           className="border text-black bg-white"

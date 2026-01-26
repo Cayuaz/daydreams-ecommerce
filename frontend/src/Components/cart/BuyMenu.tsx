@@ -57,7 +57,7 @@ const BuyMenu = ({ product }: BuyMenuProps) => {
   return (
     <div className="sm:hidden w-full">
       <Sheet open={isOpen} onOpenChange={handleOpen}>
-        <SheetTrigger>
+        <SheetTrigger asChild>
           <Button className="w-full px-8">COMPRAR</Button>
         </SheetTrigger>
         <SheetContent

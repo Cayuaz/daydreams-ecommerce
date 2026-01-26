@@ -8,16 +8,12 @@ const HeaderMobile = () => {
 
   return (
     <div className="sm:hidden flex w-full justify-between items-center px-8">
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2">
         <HeaderMobileMenu />
         <SearchBarMobile />
       </div>
-      <img
-        src="../../../public/logo.svg"
-        alt="Daydreams logo"
-        className="w-50 h-30 mt-6"
-      />
-      <div className="flex items-center gap-4">
+      <img src="/logo-v4.svg" alt="Daydreams logo" className="w-30 h-30" />
+      <div className="flex items-center gap-2">
         <CircleUser
           className="hover:text-(--secondary-color) cursor-pointer"
           onClick={() => navigate("/profile")}
