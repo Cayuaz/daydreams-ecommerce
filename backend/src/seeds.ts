@@ -1,5 +1,105 @@
 // import { Decimal } from "decimal.js";
-import { prisma } from "./lib/prisma.js";
+// import { prisma } from "./lib/prisma.js";
+
+// try {
+//   await prisma.product.createMany({
+//     data: [
+//       {
+//         name: "Camiseta Abstract Brown",
+//         price: new Decimal(350),
+//         description:
+//           'Camiseta oversized na cor marrom estonado. O destaque é a estampa central "Abstract Earth" que mistura formas orgânicas fluidas em tons de ocre, verde musgo e laranja queimado, evocando camadas geológicas. Produzida em malha 100% algodão de toque macio e acabamento vintage.',
+//         imageUrl: "/camiseta-abstract-brown.png",
+//       },
+//       {
+//         name: "Camiseta Essentials Green",
+//         price: new Decimal(350),
+//         description:
+//           "Peça fundamental da linha Essentials. Camiseta na cor verde musgo com lavagem estonada sutil, trazendo profundidade à cor. Confeccionada em algodão premium de alta densidade, possui modelagem oversized estruturada e gola careca reforçada, garantindo durabilidade e estilo minimalista.",
+//         imageUrl: "/camiseta-essentials-green.png",
+//       },
+//       {
+//         name: "Moletom Essentials Green",
+//         price: new Decimal(330),
+//         description:
+//           "Item chave da coleção Essentials. Moletom canguru na cor verde musgo com acabamento stone washed para um visual vintage autêntico. Produzido em felpa 100% algodão de gramatura pesada (360g/m²), oferece estrutura robusta, capuz duplo e caimento boxy característico da linha.",
+//         imageUrl: "/moletom-essentials-green.png",
+//       },
+//       {
+//         name: "Camiseta Essentials Brown",
+//         price: new Decimal(350),
+//         description:
+//           "Peça fundamental da linha Essentials. Camiseta em tom marrom café profundo. A lavagem industrial confere um toque aveludado e visual levemente desgastado nas costuras. Confeccionada em algodão premium de alta densidade, possui modelagem oversized estruturada e gola careca reforçada.",
+//         imageUrl: "/camiseta-essentials-brown.png",
+//       },
+//       {
+//         name: "Black Cargo Shorts",
+//         price: new Decimal(320),
+//         description:
+//           "Shorts cargo na cor preta com pegada utilitária e urbana. Confeccionado em tecido tecnológico levemente texturizado (nylon feel), possui bolsos laterais volumosos com lapela e cintura elástica com cordão ajustável, unindo funcionalidade e a estética streetwear contemporânea.",
+//         imageUrl: "/black-cargo-shorts.png",
+//       },
+//       {
+//         name: "Shorts Essentials Gray",
+//         price: new Decimal(280),
+//         description:
+//           "Integrante da linha Essentials. Shorts na cor cinza grafite com textura levemente amassada (crinkled texture) que remete ao linho. Possui modelagem relaxada acima do joelho, cós elástico confortável e bolsos laterais discretos, ideal para composições casuais e sofisticadas.",
+//         imageUrl: "/shorts-essentials-gray.png",
+//       },
+//       {
+//         name: "Shorts Essentials Black",
+//         price: new Decimal(280),
+//         description:
+//           "Integrante da linha Essentials. Shorts na cor preta com acabamento fosco e textura leve. A modelagem é fluida e confortável, com cós elástico e cordões de ajuste minimalistas. Uma peça versátil que transita entre o visual de casa e o urbano com facilidade.",
+//         imageUrl: "/shorts-essentials-black.png",
+//       },
+//       {
+//         name: "Camiseta Abstract Green",
+//         price: new Decimal(350),
+//         description:
+//           'Camiseta oversized em tom verde militar lavado. Apresenta a estampa "Abstract Forest" em silk digital de alta definição, com espirais psicodélicas que mesclam tons de marrom, bege e verde escuro, criando um efeito visual de movimento líquido sobre a malha premium.',
+//         imageUrl: "/camiseta-abstract-green.png",
+//       },
+//       {
+//         name: "Camiseta Spirits Orange",
+//         price: new Decimal(350),
+//         description:
+//           'Camiseta oversized na cor laranja ferrugem com lavagem ácida intensa. A estampa central "Spirits" apresenta uma arte abstrata e difusa em tons escuros, simulando uma pintura desgastada pelo tempo, conferindo uma aura grunge e artística à peça.',
+//         imageUrl: "/camiseta-spirits-orange.png",
+//       },
+//       {
+//         name: "Dark Blue Jeans",
+//         price: new Decimal(420),
+//         description:
+//           "Calça jeans com modelagem ultra baggy (pernas largas) na cor azul índigo clássico. Possui lavagem estonada centralizada (faded wash) que cria volume visual, costuras contrastantes e caimento pesado característico do denim premium. Uma releitura moderna dos clássicos dos anos 90.",
+//         imageUrl: "/dark-blue-jeans.png",
+//       },
+//       {
+//         name: "Dark Black Jeans",
+//         price: new Decimal(420),
+//         description:
+//           "Calça jeans com modelagem ultra baggy em denim preto com lavagem estonada profunda (midnight wash). Apresenta bigodes tridimensionais e desbotamento estratégico nas coxas, conferindo um visual 'worn-in' autêntico e rebelde. Denim pesado de alta durabilidade.",
+//         imageUrl: "/dark-black-jeans.png",
+//       },
+//       {
+//         name: "Dark Gray Jeans",
+//         price: new Decimal(420),
+//         description:
+//           "Calça jeans wide leg em tom cinza cimento com lavagem ácida (acid wash). A textura visual remete ao concreto urbano, perfeita para composições grunge e streetwear industrial. Possui caimento solto e costuras reforçadas.",
+//         imageUrl: "/dark-gray-jeans.png",
+//       },
+//       {
+//         name: "Shorts Gray Ink",
+//         price: new Decimal(290),
+//         description:
+//           "Shorts em tecido tecnológico leve (tactel) com estampa sublimada que mistura formas geométricas e borrões em tons de cinza, verde e azul. Possui bolsos laterais com zíper tratorado para segurança e cintura elástica, unindo performance esportiva e estilo urbano.",
+//         imageUrl: "/shorts-gray-ink.png",
+//       },
+//     ],
+//   });
+// } catch (error) {
+//   console.log(error);
+// }
 
 // try {
 //   await prisma.product.createMany({
@@ -179,11 +279,11 @@ import { prisma } from "./lib/prisma.js";
 //   console.log(error);
 // }
 
-try {
-  await prisma.product.update({
-    where: { id: "3cf87e9b-0da2-4f74-8fc7-8a335ac13ec8" },
-    data: { isFeatured: true },
-  });
-} catch (error) {
-  console.log(error);
-}
+// try {
+//   await prisma.product.update({
+//     where: { id: "3cf87e9b-0da2-4f74-8fc7-8a335ac13ec8" },
+//     data: { isFeatured: true },
+//   });
+// } catch (error) {
+//   console.log(error);
+// }
