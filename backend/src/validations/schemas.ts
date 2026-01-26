@@ -17,7 +17,17 @@ const toSingular = (text: string) => {
   const word = text.toLowerCase().trim();
 
   //Verifica se a palavra é uma daquelas em que o plural e o singular são iguais
-  const exceptions = ["tênis", "lápis", "óculos", "short", "jorts", "shorts"];
+  const exceptions = [
+    "tênis",
+    "lápis",
+    "óculos",
+    "short",
+    "jorts",
+    "shorts",
+    "jorts-shorts",
+    "casacos",
+    "acessorios",
+  ];
   if (exceptions.includes(word)) return word;
 
   return word
