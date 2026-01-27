@@ -5,7 +5,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/Components/ui/sheet";
-import Button from "../Button";
+
 import { formPrice } from "@/lib/utils";
 import Size from "../products/Size";
 import { useEffect, useState } from "react";
@@ -57,8 +57,8 @@ const BuyMenu = ({ product }: BuyMenuProps) => {
   return (
     <div className="sm:hidden w-full">
       <Sheet open={isOpen} onOpenChange={handleOpen}>
-        <SheetTrigger asChild>
-          <Button className="w-full px-8">COMPRAR</Button>
+        <SheetTrigger className="w-full px-8 py-2 text-sm rounded-sm bg-[#222224] hover:bg-[#323235] text-white transition-colors uppercase ">
+          COMPRAR
         </SheetTrigger>
         <SheetContent
           side="bottom"
