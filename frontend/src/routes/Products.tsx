@@ -83,6 +83,13 @@ export const Component = () => {
         </div>
       )}
 
+      {/* O Suspense suspende a renderização desta parte do componente até que a requisição 
+      seja completada e a Promise resolvida. Enquanto isso, ele renderiza o fallback 
+      (Skeleton, que é a representação visual de carregamento).
+  
+      O Suspense só aceita Promises, e o componente <Await> é o responsável por 
+      aguardar a resolução delas e entregar os dados prontos.
+       */}
       <Suspense fallback={<SkeletonProducts />}>
         <Await resolve={products}>
           {(resolvedProducts) => (
@@ -103,7 +110,7 @@ export const Component = () => {
               {!resolvedProducts.products && <UnavailableProducts />}
               {/* Mensagem de produtos não encontrados */}
               {resolvedProducts.products.length === 0 && (
-                <p className="text-base text-(--secondary-color) font-bold my-10">
+                <p className="text-base text-(--secondary-color) font-bold my-10 px-4">
                   Nenhum produto foi encontrado! Por favor utilize outra palavra
                   e tente novamente.
                 </p>

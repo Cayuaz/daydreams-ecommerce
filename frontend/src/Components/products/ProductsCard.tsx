@@ -36,7 +36,6 @@ const ProductsCard = ({ product, imgWidth }: ProductCardProps) => {
 
       {/* Menu de compras mobile */}
       <BuyMenu product={product} />
-      {/* Botão com a função que ativa o state com os dados do produto que o usuário clicou para comprar */}
       <Button className="hidden sm:block" click={handleAddProduct}>
         COMPRAR
       </Button>

@@ -50,6 +50,13 @@ export const Component = () => {
 
   return (
     <div>
+      {/* O Suspense suspende a renderização desta parte do componente até que a requisição 
+      seja completada e a Promise resolvida. Enquanto isso, ele renderiza o fallback 
+      (Skeleton, que é a representação visual de carregamento).
+  
+      O Suspense só aceita Promises, e o componente <Await> é o responsável por 
+      aguardar a resolução delas e entregar os dados prontos.
+       */}
       <Suspense fallback={<SkeletonProduct />}>
         <Await resolve={product}>
           {(resolvedProduct) => (

@@ -14,6 +14,10 @@ const Size = ({ className }: SizeProps) => {
     <div className="flex flex-col gap-4 items-start ">
       <span>Tamanho</span>
       <div className="flex gap-4">
+        {/* Itera o array de sizes e cria um botão com cada um deles,
+        a ideia é que quando um deles for clicado o valor dele é setado no state global, 
+        e ai o botão que tiver o mesmo valor desse state tem o seu background mudado
+        */}
         {sizes.map((size, i) => (
           <button
             className={`${selectedSize === size ? "bg-(--secondary-color)/80" : "hover:bg-[#6A6868]/40"} border border-black w-10 sm:w-15 py-1 rounded transition-colors text-sm ${className}`}

@@ -13,9 +13,10 @@ type ProductCardProps = { product: ProductSchema };
 const ProductCard = ({ product }: ProductCardProps) => {
   //State global dos tamanhos dos produtos [P, M, G e GG]
   const { selectedSize, setSelectedSize } = useSizeStore();
-  //State global do carrinho de compras
+  //Custom Hook que cuida de executar a ação de adicionar um item ao carrinho e de mostrar o componente de item adicionado
   const execute = useAddProduct();
 
+  //Se um produto estiver selecionado chama a função do custom hook
   const buyProduct = () => {
     if (selectedSize) {
       execute({ ...product, size: selectedSize, qtd: 0 });
