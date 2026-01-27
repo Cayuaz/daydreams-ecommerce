@@ -58,20 +58,24 @@ export const Component = () => {
         Minha conta
       </h1>
       <span className="text-left text-sm">Dados pessoais</span>
+      {/* Informações do usuário */}
       <Suspense
         fallback={<Skeleton className="h-32 w-full rounded-md bg-[#545457]" />}
       >
         <Await resolve={user}>
           {(resolvedUser) => (
             <>
+              {/* Container de informações */}
               {resolvedUser && (
                 <div className="flex flex-col justify-between border border-gray-500 rounded-md py-6 px-4 w-full ">
+                  {/* Nome completo */}
                   <div className="flex flex-col items-start gap-1">
                     <span className="font-bold">Nome:</span>{" "}
                     <p className="text-sm">
                       {resolvedUser.name} {resolvedUser.lastname}
                     </p>
                   </div>
+                  {/* Email */}
                   <div className="flex flex-col items-start gap-1 mt-4">
                     <span className="font-bold">Email:</span>{" "}
                     <p className="text-sm">{resolvedUser.email}</p>
@@ -79,6 +83,7 @@ export const Component = () => {
                   <div></div>
                 </div>
               )}
+              {/*Container de erro */}
               {!resolvedUser && (
                 <div className="border border-black/30 w-full mx-auto rounded-sm px-4 py-5">
                   <h1 className="text-base sm:text-lg text-(--secondary-color) font-bold">
@@ -94,6 +99,7 @@ export const Component = () => {
           )}
         </Await>
       </Suspense>
+      {/* Botão de voltar para home */}
       <Button
         className="w-fit px-10"
         click={() => navigate("/")}
