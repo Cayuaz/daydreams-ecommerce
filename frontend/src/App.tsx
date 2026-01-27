@@ -5,6 +5,7 @@ import { Footer } from "./Components/Footer";
 import { Suspense, useEffect } from "react";
 import BuyDesktopMenu from "./Components/cart/BuyDesktopMenu";
 import AddedProduct from "./Components/cart/AddedProduct";
+import { Toaster } from "sonner";
 
 function App() {
   useEffect(() => {
@@ -27,6 +28,7 @@ function App() {
           <BuyDesktopMenu />
           {/* COmponente que mostra detalhes do produto adicionado ao carrinho */}
           <AddedProduct />
+          <Toaster />
           <Outlet />
         </main>
       </Suspense>
