@@ -8,6 +8,7 @@ import {
   Await,
   redirect,
   useLoaderData,
+  useNavigate,
   type LoaderFunctionArgs,
 } from "react-router-dom";
 import { useAddedProductStore } from "@/stores/useAddedProductStore";
@@ -21,25 +22,28 @@ export const loader = ({ request, params }: LoaderFunctionArgs) => {
       const { success, data } = productSchema.safeParse(res);
 
       if (!success) {
-        return redirect("/");
+        return false;
       }
 
       return data;
     })
     .catch((err) => {
       console.log(err);
-      return redirect("/");
+      return false;
     });
+
+  if (!productPromise) return redirect("/");
 
   return { product: productPromise };
 };
 
 export const Component = () => {
   const { product } = useLoaderData() as { product: Promise<ProductSchema> };
+  const navigate = useNavigate();
 
   const { setAddedProduct } = useAddedProductStore();
 
-  //Limpa o state com o produto que foi adicionado ao carrinho
+  //Limpa o state do produto que foi adicionado ao carrinho
   useEffect(() => {
     return () => setAddedProduct(null);
   }, [setAddedProduct]);
@@ -49,9 +53,14 @@ export const Component = () => {
       <Suspense fallback={<SkeletonProduct />}>
         <Await resolve={product}>
           {(resolvedProduct) => (
-            <div className="flex flex-col justify-center lg:grid lg:grid-cols-[1fr_1fr] w-full mx-auto mt-15 mb-40 px-8 gap-10 sm:w-4/5">
-              <ProductCard product={resolvedProduct} />
-            </div>
+            <>
+              {resolvedProduct && (
+                <div className="flex flex-col justify-center lg:grid lg:grid-cols-[1fr_1fr] w-full mx-auto mt-15 mb-40 px-8 gap-10 sm:w-4/5">
+                  <ProductCard product={resolvedProduct} />
+                </div>
+              )}
+              {!resolvedProduct && navigate("/")}
+            </>
           )}
         </Await>
       </Suspense>

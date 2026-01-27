@@ -8,7 +8,7 @@ const HeaderDesktop = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="items-center hidden sm:flex sm:flex-col w-full px-8 py-4 lg:w-5/6 lg:mx-auto lg:px-0">
+    <div className="items-center hidden sm:flex sm:flex-col w-full px-8 lg:px-15 py-4 lg:mx-auto">
       {/*Container com a logo, barra de pesquisa e ícones */}
       <div className="grid grid-cols-[1fr_2fr_1fr] gap-6 items-center mx-auto w-full">
         <img src="/logo-v4.svg" alt="Daydreams logo" className="w-30 h-30" />

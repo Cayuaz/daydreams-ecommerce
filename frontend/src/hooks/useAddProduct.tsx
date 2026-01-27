@@ -11,13 +11,16 @@ export const useAddProduct = () => {
 
   const execute = (item: ProductCartSchema) => {
     if (counter() === 100) {
-      toast.error("Limite de produtos adicionados ao carrinho atingido!", {
-        style: {
-          background: "#974947",
-          color: "#fff",
-          border: "1px solid #00000010",
+      toast.error(
+        "Seu carrinho atingiu o limite de 100 produtos. Finalize a compra para adicionar mais!",
+        {
+          style: {
+            background: "#974947",
+            color: "#fff",
+            border: "1px solid #00000010",
+          },
         },
-      });
+      );
       return;
     }
 

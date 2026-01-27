@@ -2,7 +2,11 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "/shop-cart",
         lazy: () => import("./routes/ShopCart.tsx"),
+      },
+      {
+        path: "*",
+        element: <Navigate to={"/"} replace />,
       },
     ],
   },
