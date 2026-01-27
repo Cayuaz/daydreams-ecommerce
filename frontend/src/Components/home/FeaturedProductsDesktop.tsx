@@ -53,7 +53,10 @@ const FeaturedProductsDesktop = ({
       {/* botão Direito */}
       <ChevronRight
         className={`absolute right-0 size-15 top-1/2 -translate-y-1/2 cursor-pointer z-1 transition-opacity ${
-          currentIndex === itemsPerPage
+          /*O botão de mostrar o próximo item pode ser apertado apenas 4 vezes, pois há 8 itens e 4 já estão sendo exibidos,
+          a mesma lógica poderia ser aplicada a mais itens, se tivessem 12, 4 já estão sendo exibidos. então restam 8 a serem mostrados
+          */
+          currentIndex === Math.ceil(products.length - itemsPerPage)
             ? "opacity-30 cursor-not-allowed"
             : "opacity-100 hover:scale-110"
         }`}

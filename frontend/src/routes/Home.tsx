@@ -13,7 +13,6 @@ import { Suspense, useEffect } from "react";
 import { Await, useLoaderData } from "react-router-dom";
 import { useAddedProductStore } from "@/stores/useAddedProductStore";
 
-//
 export const loader = () => {
   const productsPromise = axiosInstance
     .get("/products/featured")
@@ -56,12 +55,15 @@ export const Component = () => {
         <Await resolve={products}>
           {(resolvedProducts) => (
             <>
+              {/* Componente de produtos em destaque mobile */}
               {resolvedProducts.length > 0 && (
                 <FeaturedProductsMobile products={resolvedProducts} />
               )}
+              {/* Componente de produtos em destaque desktop */}
               {resolvedProducts.length > 0 && (
                 <FeaturedProductsDesktop products={resolvedProducts} />
               )}
+              {/* Componente de produtos indisponíveis para casos de erro */}
               {resolvedProducts.length === 0 && <UnavailableProducts />}
             </>
           )}
