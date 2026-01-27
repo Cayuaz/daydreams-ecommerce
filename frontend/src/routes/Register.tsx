@@ -3,6 +3,7 @@ import {
   Form,
   redirect,
   useActionData,
+  useNavigation,
   type ActionFunctionArgs,
 } from "react-router-dom";
 import Eyes from "@/Components/Eyes";
@@ -10,6 +11,7 @@ import Button from "@/Components/Button";
 import { authResponseSchema, registerSchema } from "@/validations/schemas";
 import FormErrorMsg from "@/Components/FormErrorMsg";
 import { axiosInstance } from "@/lib/axios";
+import { Spinner } from "@/Components/ui/spinner";
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   //Dados do formulário
@@ -46,11 +48,11 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       return false;
     }
 
-    //Se a resposta for válida, salvar o token e redirecionar para a página inicial
+    //Se a resposta for válida, salva o token e redirecionar para a página inicial
     localStorage.setItem("token", respData.token);
     localStorage.setItem("userId", respData.userId);
 
-    return redirect("/");
+    return redirect("/profile");
   } catch (error) {
     console.log(error);
     return false;
@@ -60,6 +62,8 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 export const Component = () => {
   const action = useActionData() as boolean;
   const [typeInput, setTypeInput] = useState("password");
+  const navigation = useNavigation();
+  const isLoading = navigation.state === "submitting";
 
   return (
     <div className="my-15 flex flex-col gap-8">
@@ -132,8 +136,15 @@ export const Component = () => {
         </div>
         {/* Mensagem de erro caso o login falhe */}
         {action === false && <FormErrorMsg />}
+        {/* Carrega o componente spinner do shadcn quando o formulário está sendo enviado */}
         <Button type="submit" className="w-full sm:w-3/5">
-          CRIAR
+          {!isLoading && <span>CRIAR</span>}
+          {isLoading && (
+            <div className="flex justify-center gap-2">
+              <Spinner className="size-5" />
+              <span>Carregando</span>
+            </div>
+          )}
         </Button>
       </Form>
     </div>

@@ -4,6 +4,7 @@ import {
   Link,
   redirect,
   useActionData,
+  useNavigation,
   type ActionFunctionArgs,
 } from "react-router-dom";
 import { useState } from "react";
@@ -11,6 +12,7 @@ import Eyes from "@/Components/Eyes";
 import { authResponseSchema, loginSchema } from "@/validations/schemas";
 import { axiosInstance } from "@/lib/axios";
 import FormErrorMsg from "@/Components/FormErrorMsg";
+import { Spinner } from "@/Components/ui/spinner";
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   //Dados do formulário
@@ -53,7 +55,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     localStorage.setItem("token", respData.token);
     localStorage.setItem("userId", respData.userId);
 
-    return redirect("/");
+    return redirect("/profile");
   } catch (error) {
     console.log(error);
     return false;
@@ -63,6 +65,8 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 export const Component = () => {
   const [typeInput, setTypeInput] = useState("password");
   const action = useActionData() as boolean;
+  const navigation = useNavigation();
+  const isLoading = navigation.state === "submitting";
 
   return (
     <div className="my-15 flex flex-col gap-8">
@@ -103,8 +107,15 @@ export const Component = () => {
         </div>
         {/* Mensagem de erro caso o login falhe */}
         {action === false && <FormErrorMsg />}
+        {/* Carrega o componente spinner do shadcn quando o formulário está sendo enviado */}
         <Button type="submit" className="w-full sm:w-3/5">
-          LOGIN
+          {!isLoading && <span>Login</span>}
+          {isLoading && (
+            <div className="flex justify-center gap-2">
+              <Spinner className="size-5" />
+              <span>Carregando</span>
+            </div>
+          )}
         </Button>
       </Form>
       {/*Link para a página de registro */}
