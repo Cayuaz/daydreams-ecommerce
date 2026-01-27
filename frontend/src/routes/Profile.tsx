@@ -1,4 +1,5 @@
 import Button from "@/Components/Button";
+import Logout from "@/Components/Logout";
 import { Skeleton } from "@/Components/ui/skeleton";
 import { axiosInstance } from "@/lib/axios";
 import { userSchema, type UserSchema } from "@/validations/schemas";
@@ -57,7 +58,13 @@ export const Component = () => {
       <h1 className="w-fit border-b-2 border-black text-base lg:text-lg xl:text-xl">
         Minha conta
       </h1>
-      <span className="text-left text-sm">Dados pessoais</span>
+      <div className="flex justify-between">
+        <span className="text-left text-sm">Dados pessoais</span>{" "}
+        {/* Componente de logout */}
+        <div className="border-2 border-(--secondary-color) px-2 rounded-sm cursor-pointer">
+          <Logout />
+        </div>
+      </div>
       {/* Informações do usuário */}
       <Suspense
         fallback={<Skeleton className="h-32 w-full rounded-md bg-[#545457]" />}
