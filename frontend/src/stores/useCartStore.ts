@@ -9,6 +9,7 @@ type CartStore = {
   increment: (id: string, size: string) => void;
   decrement: (id: string, size: string) => void;
   counter: () => number;
+  total: () => number;
 };
 
 export const useCartStore = create<CartStore>()(
@@ -18,9 +19,7 @@ export const useCartStore = create<CartStore>()(
       counter: () => {
         const Cart = get().Cart;
 
-        const total = Cart.reduce((acc, product) => (acc += product.qtd), 0);
-
-        return total;
+        return Cart.reduce((acc, product) => (acc += product.qtd), 0);
       },
       //Método para adicionar produtos/itens no carrinho de compras
       addProduct: (item) => {
@@ -83,6 +82,14 @@ export const useCartStore = create<CartStore>()(
               : product,
           ),
         })),
+      total: () => {
+        const Cart = get().Cart;
+
+        return Cart.reduce(
+          (acc, product) => (acc += product.qtd * product.price),
+          0,
+        );
+      },
     }),
     { name: "Shopping cart" },
   ),

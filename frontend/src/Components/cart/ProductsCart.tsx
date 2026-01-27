@@ -6,11 +6,13 @@ import { useNavigate } from "react-router-dom";
 
 const CartProducts = () => {
   //State global do carrinho de compras
-  const { Cart, removeProduct } = useCartStore();
+  const { Cart, removeProduct, total } = useCartStore();
   const navigate = useNavigate();
+  const formattedTotal = formPrice(total());
 
   return (
     <div>
+      {/* Títulos das informações do carrinho */}
       <div className="grid grid-cols-2 sm:grid-cols-3 mb-2">
         <span>Produto</span>
         <span className="hidden sm:block">Quantidade</span>
@@ -56,6 +58,9 @@ const CartProducts = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className="mt-4 flex items-left ml-8">
+        <span className="text-xl">Total estimado: {formattedTotal}</span>
       </div>
     </div>
   );
