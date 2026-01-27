@@ -9,11 +9,19 @@ const HeaderMobile = () => {
 
   return (
     <div className="sm:hidden flex w-full justify-between items-center px-8">
+      {/* Menu e Barra de pesquisa */}
       <div className="flex items-center gap-2">
         <HeaderMobileMenu />
         <SearchBarMobile />
       </div>
-      <img src="/logo-v4.svg" alt="Daydreams logo" className="w-30 h-30" />
+      {/* Logo daydreams */}
+      <img
+        src="/logo-v4.svg"
+        alt="Daydreams logo"
+        className="w-30 h-30"
+        onClick={() => navigate("/")}
+      />
+      {/* Informações da conta/perfil e Carrinho de compras */}
       <div className="flex items-center gap-2">
         <CircleUser
           className="hover:text-(--secondary-color) cursor-pointer"

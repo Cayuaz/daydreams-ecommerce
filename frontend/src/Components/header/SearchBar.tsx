@@ -25,6 +25,7 @@ const SearchBar = ({ setOpen, className, inputTextColor }: SearchBarProps) => {
       className={`flex gap-4 w-5/6 sm:w-full lg:w-4/6 mx-auto items-center ${className} py-2 px-2 rounded-lg relative`}
       onSubmit={() => setOpen!(false)}
     >
+      {/* Ícone da lupa  */}
       <button type="submit">
         <Search className="w-5 text-[#545457]" />
       </button>
@@ -38,6 +39,7 @@ const SearchBar = ({ setOpen, className, inputTextColor }: SearchBarProps) => {
         required
         ref={inputRef}
       />
+      {/* Ícone de x com evento que apaga tudo o que foi digitado na barra de pesquisa */}
       {input && (
         <X
           className="absolute bottom-1/2 translate-1/2 right-5 size-4 text-[#545457] cursor-pointer"

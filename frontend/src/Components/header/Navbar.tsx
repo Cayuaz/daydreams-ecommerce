@@ -45,7 +45,7 @@ const Navbar = () => {
             Home
           </NavLink>
         </li>
-        {/* About */}
+        {/* Sobre */}
         <li>
           <NavLink
             to={"/About"}
@@ -59,7 +59,7 @@ const Navbar = () => {
             Sobre
           </NavLink>
         </li>
-        {/* Products */}
+        {/* Produtos */}
         <li className="relative">
           <div className="flex items-center gap-1 group">
             <NavLink

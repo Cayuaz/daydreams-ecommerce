@@ -36,6 +36,7 @@ export const HeaderMobileMenu = () => {
       </SheetTrigger>
       <SheetContent className="bg-(--primary-color) text-white">
         <SheetHeader className="flex flex-col gap-4">
+          {/* Home */}
           <SheetTitle className="font-normal">
             <SheetClose asChild>
               <Link
@@ -46,6 +47,7 @@ export const HeaderMobileMenu = () => {
               </Link>
             </SheetClose>
           </SheetTitle>
+          {/* Sobre */}
           <SheetTitle className="font-normal">
             <SheetClose asChild>
               <Link
@@ -56,6 +58,7 @@ export const HeaderMobileMenu = () => {
               </Link>
             </SheetClose>
           </SheetTitle>
+          {/* Produtos */}
           <SheetTitle className="font-normal group flex items-center">
             <SheetClose asChild>
               <ProductsMenu />
