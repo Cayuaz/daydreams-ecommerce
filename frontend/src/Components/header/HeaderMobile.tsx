@@ -1,7 +1,8 @@
-import { CircleUser, Handbag } from "lucide-react";
+import { CircleUser } from "lucide-react";
 import { HeaderMobileMenu } from "./MenuMobile";
 import SearchBarMobile from "./SearchBarMobile";
 import { useNavigate } from "react-router-dom";
+import CartIcon from "../cart/CartIcon";
 
 const HeaderMobile = () => {
   const navigate = useNavigate();
@@ -18,10 +19,7 @@ const HeaderMobile = () => {
           className="hover:text-(--secondary-color) cursor-pointer"
           onClick={() => navigate("/profile")}
         />
-        <Handbag
-          className="hover:text-(--secondary-color) cursor-pointer"
-          onClick={() => navigate("/shop-cart")}
-        />
+        <CartIcon />
       </div>
     </div>
   );

@@ -1,7 +1,8 @@
-import { HandbagIcon, CircleUserIcon } from "lucide-react";
+import { CircleUserIcon } from "lucide-react";
 import Navbar from "./Navbar";
 import SearchBar from "./SearchBar";
 import { useNavigate } from "react-router-dom";
+import CartIcon from "../cart/CartIcon";
 
 const HeaderDesktop = () => {
   const navigate = useNavigate();
@@ -19,7 +20,8 @@ const HeaderDesktop = () => {
 
         <div className="flex gap-3 justify-end">
           <CircleUserIcon onClick={() => navigate("/profile")} />
-          <HandbagIcon onClick={() => navigate("/shop-cart")} />
+          {/* <HandbagIcon onClick={() => navigate("/shop-cart")} /> */}
+          <CartIcon />
         </div>
       </div>
       {/*Navbar: Home, Sobre e Produtos */}
