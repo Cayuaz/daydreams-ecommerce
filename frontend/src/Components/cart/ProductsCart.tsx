@@ -18,8 +18,10 @@ const CartProducts = () => {
         <span className="hidden sm:block">Quantidade</span>
         <span>Preço</span>
       </div>
+      {/* Cards dos produtos do carrinho de compras */}
       <div className="border-y border-y-gray-500 py-6 px-4 flex flex-col items-center justify-between w-full gap-6">
         {Cart.map((product) => (
+          // A coluna de quantidade é escondida em telas menores e exibida apenas em telas maiores
           <div className="grid grid-cols-2 sm:grid-cols-3 items-center gap-1">
             {/* Imagem e nome do produto */}
             <div className="flex flex-col items-center gap-1 sm:gap-0">
@@ -30,7 +32,7 @@ const CartProducts = () => {
                 className="w-4/5 sm:w-3/5 xl:w-2/5 hover:scale-105 transition-transform"
                 onClick={() => navigate(`/products/${product.id}`)}
               />
-              {/* Em dispositivos móveis a coluna de quantidade deixa de ser exibida e o componente é exibido aqui */}
+              {/* Em dispositivos móveis a coluna de quantidade é exibida aqui */}
               <ProductQuantity
                 id={product.id}
                 size={product.size}

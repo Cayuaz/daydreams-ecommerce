@@ -16,7 +16,7 @@ const AddedProduct = () => {
     setAddedProduct(null);
   }, [setAddedProduct]);
 
-  //Timer de auto-fechamento sincronizado com o estado do produto
+  //Timer de auto-fechamento sincronizado com o estado do produto (fecha o componente depois de 5 seguendos)
   useEffect(() => {
     if (addedProduct) {
       const timer = setTimeout(() => {

@@ -16,15 +16,18 @@ const ProductQuantity = ({
 }: ProductQuantityProps) => {
   const { increment, decrement } = useCartStore();
 
+  //Função que chama o método de decrementar do state do carrinho de compras
   const handleMinus = () => {
     if (value !== 1) {
       decrement(id, size);
     }
   };
 
+  //Função que chama o método de incrementar do state do carrinho de compras
   const handlePlus = () => increment(id, size);
 
   return (
+    //Container com os botões de aumentar e diminuir a quantidade de um determinado produto
     <div
       className={`border border-gray-500 gap-2 justify-around items-center px-2 w-40 mx-auto ${className}`}
     >
