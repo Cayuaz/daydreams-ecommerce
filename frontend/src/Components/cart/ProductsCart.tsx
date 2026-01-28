@@ -22,7 +22,10 @@ const CartProducts = () => {
       <div className="border-y border-y-gray-500 py-6 px-4 flex flex-col items-center justify-between w-full gap-6">
         {Cart.map((product) => (
           // A coluna de quantidade é escondida em telas menores e exibida apenas em telas maiores
-          <div className="grid grid-cols-2 sm:grid-cols-3 items-center gap-1">
+          <div
+            className="grid grid-cols-2 sm:grid-cols-3 items-center gap-1"
+            key={product.id}
+          >
             {/* Imagem e nome do produto */}
             <div className="flex flex-col items-center gap-1 sm:gap-0">
               <span className="text-lg">{product.name}</span>
