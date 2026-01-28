@@ -6,7 +6,7 @@ import type { IProductRepository } from "./IProductRepository.js";
 //Mapeia a query string para palavras-chave relevantes
 const getKeyWords = (query: string) => {
   const words = {
-    camiseta: ["camiseta", "t-shirt", "camisa"],
+    camiseta: ["camiseta", "t-shirt", "camisa", "polo"],
     calca: ["calça", "pants", "jeans"],
     "jorts-shorts": ["bermuda", "shorts", "short", "jorts"],
     casacos: ["casaco", "moletom", "jacket", "hoodie"],
