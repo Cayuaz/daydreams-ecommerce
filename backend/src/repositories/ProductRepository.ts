@@ -43,7 +43,11 @@ export class ProductRepository implements IProductRepository {
       },
     });
     const total = await prisma.product.count({
-      where: { name: { contains: query, mode: "insensitive" } },
+      where: {
+        OR: keywords.map((keyword) => ({
+          name: { contains: keyword, mode: "insensitive" },
+        })),
+      },
     });
 
     const products = productsData.map((product) => new Product(product));
