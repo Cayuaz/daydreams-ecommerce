@@ -49,20 +49,15 @@ A estética e a experiência de usuário foram inspiradas em referências do cen
 
 ## Preview
 
-<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; justify-content: center;">
-   <img src="./github/assets/daydreams-home.png" alt="Home" width="45%">
-   <img src="./github/assets/daydreams-products.png" alt="Produtos" width="45%">
-   <img src="./github/assets/daydreams-about.png" alt="Sobre" width="45%">
-   <img src="./github/assets/daydreams-product.png" alt="Produto" width="45%">
-</div>
-
-### Home
-
 ![Home](./github/assets/daydreams-home.png)
 
-### Produtos
+&nbsp;
 
 ![Produtos](./github/assets/daydreams-products.png)
+
+&nbsp;
+
+![Produto](./github/assets/daydreams-product.png)
 
 ---
 
