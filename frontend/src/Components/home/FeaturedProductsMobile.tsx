@@ -7,7 +7,7 @@ type FeaturedProductsMobileProps = {
 
 const FeaturedProductsMobile = ({ products }: FeaturedProductsMobileProps) => {
   return (
-    <div className="lg:hidden justify-center items-center grid grid-cols-2 mt-6 mb-18 gap-4 ">
+    <div className="lg:hidden justify-center items-center grid grid-cols-2 mt-6 mb-24 gap-4 ">
       {products.map((product) => (
         <ProductCard product={product} imgWidth="w-4/6" key={product.id} />
       ))}

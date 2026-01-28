@@ -17,7 +17,6 @@ export const loader = () => {
   const productsPromise = axiosInstance
     .get("/products/featured")
     .then((res) => {
-      console.log(res);
       const { success, data } = productArraySchema.safeParse(res);
 
       if (!success) {

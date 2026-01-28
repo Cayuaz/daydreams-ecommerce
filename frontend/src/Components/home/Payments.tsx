@@ -2,7 +2,8 @@ import { Truck, CreditCard, Banknote } from "lucide-react";
 
 const Payments = () => {
   return (
-    <div className="grid gap-6 grid-rows-2 grid-cols-2 sm:grid-cols-3 sm:grid-rows-1 sm:gap-1 items-center justify-center px-8 mb-20 mx-auto w-full lg:w-5/6 lg:mb-40">
+    <div className="grid gap-6 grid-rows-2 grid-cols-2 sm:grid-cols-3 sm:grid-rows-1 sm:gap-1 items-center justify-center px-8 mb-25 mx-auto w-full lg:w-5/6 lg:mb-40">
+      {/* Frete */}
       <div className="flex flex-col items-center col-span-2 sm:col-span-1 gap-2">
         <Truck className="size-15" />
         <span className="font-semibold">Frete grátis</span>
@@ -10,11 +11,13 @@ const Payments = () => {
           Em compras acima de R$299,99 para todas as regiões
         </p>
       </div>
+      {/* Cartão */}
       <div className="flex flex-col items-center gap-2">
         <CreditCard className="size-15" />
         <span className="font-semibold">Pague com cartão</span>
         <p className="text-sm">Até 6x sem juros</p>
       </div>
+      {/* Pix */}
       <div className="flex flex-col items-center gap-2">
         <Banknote className="size-15" />
         <span className="font-semibold">Pague com pix</span>
