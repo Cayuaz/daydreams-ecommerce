@@ -8,7 +8,7 @@ const HeaderMobile = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="sm:hidden flex w-full justify-between items-center px-8">
+    <div className="sm:hidden flex w-full justify-between items-center px-6">
       {/* Menu e Barra de pesquisa */}
       <div className="flex items-center gap-2">
         <HeaderMobileMenu />

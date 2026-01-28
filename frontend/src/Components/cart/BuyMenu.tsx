@@ -57,12 +57,12 @@ const BuyMenu = ({ product }: BuyMenuProps) => {
   return (
     <div className="sm:hidden w-full">
       <Sheet open={isOpen} onOpenChange={handleOpen}>
-        <SheetTrigger className="w-full px-8 py-2 text-center text-sm rounded-sm bg-[#222224] hover:bg-[#323235] text-white transition-colors uppercase ">
+        <SheetTrigger className="w-full flex items-center justify-center px-8 py-2 text-center text-sm rounded-sm bg-[#222224] hover:bg-[#323235] text-white transition-colors uppercase ">
           COMPRAR
         </SheetTrigger>
         <SheetContent
           side="bottom"
-          className="bg-(--primary-color) text-white border-0 h-2/5"
+          className="bg-(--primary-color) text-white border-0 h-3/5"
         >
           <SheetHeader className="flex flex-col gap-4">
             {/* Nome do produto */}
