@@ -83,7 +83,7 @@ export const Component = () => {
                 <div className="flex gap-8 items-center justify-center my-15">
                   <Pages
                     total={resolvedProducts.totalPages}
-                    url={`/search/products/category/${categoryName}/page/`}
+                    url={`/products/category/${categoryName}/`}
                   />
                 </div>
               )}

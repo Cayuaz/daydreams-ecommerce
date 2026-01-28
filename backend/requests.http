@@ -25,7 +25,7 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyNTMyY2U3L
 
 ###
 
-GET http://localhost:10000/products?q=camiseta&page=2
+GET http://localhost:10000/products?q=camiseta&page=1
 
 ###
 
