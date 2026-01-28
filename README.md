@@ -63,7 +63,7 @@ A estética e a experiência de usuário foram inspiradas em referências do cen
 
 ## Funcionalidades
 
-### 🎨 Frontend (Client)
+### Frontend (Client)
 
 - **Performance & Code Splitting:** Uso de `lazy()` imports e `Suspense` para carregar rotas sob demanda.
 - **Gerenciamento de Estado Global:**
@@ -75,7 +75,7 @@ A estética e a experiência de usuário foram inspiradas em referências do cen
   - **Animações:** Transições suaves e modais de feedback utilizando **Framer Motion**.
   - **Notificações:** Feedback de usuário via **Sonner**.
 
-### 🧠 Backend (API)
+### Backend (API)
 
 - **Busca Inteligente (Smart Search):** Algoritmo capaz de normalizar termos (ex: plural/singular, acentos) e identificar sinônimos (ex: "jorts" retorna "shorts").
 - **Segurança:** Autenticação via JWT, senhas com Bcrypt e validação de inputs com **Zod**.
