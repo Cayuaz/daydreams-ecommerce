@@ -25,7 +25,8 @@ export class ProductRepository implements IProductRepository {
     const keywords = getKeyWords(normalizeQuery);
 
     const productsData = await prisma.product.findMany({
-      // ajusta a busca dos produtos para considerar todas as palavras-chave, o or faz uma busca com cada palavra dentro do array
+      // Busca produtos que contenham as palavras-chave em seu nome (apenas se a query tiver um array de palavras-chave)
+      // O or faz uma busca com cada palavra dentro do array retornado pelo getKeyWords
       where: {
         OR: keywords.map((keyword) => ({
           name: { contains: keyword, mode: "insensitive" },
@@ -42,8 +43,13 @@ export class ProductRepository implements IProductRepository {
         imageUrl: true,
       },
     });
+    // O total também considera as palavras-chave caso a query tenha um array de palavras-chave
     const total = await prisma.product.count({
-      where: { name: { contains: query, mode: "insensitive" } },
+      where: {
+        OR: keywords.map((keyword) => ({
+          name: { contains: keyword, mode: "insensitive" },
+        })),
+      },
     });
 
     const products = productsData.map((product) => new Product(product));
