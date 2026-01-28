@@ -10,7 +10,7 @@ const CartIcon = () => {
   return (
     <div className="relative">
       <Handbag
-        className="hover:text-(--secondary-color) transition-colors"
+        className="hover:text-(--secondary-color) transition-colors sm:size-7"
         onClick={() => navigate("/shop-cart")}
       />
       {/* Container que mostra o número de produtos que estão no carrinho */}

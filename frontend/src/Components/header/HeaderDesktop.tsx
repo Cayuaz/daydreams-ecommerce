@@ -1,4 +1,4 @@
-import { CircleUserIcon } from "lucide-react";
+import { CircleUser } from "lucide-react";
 import Navbar from "./Navbar";
 import SearchBar from "./SearchBar";
 import { useNavigate } from "react-router-dom";
@@ -27,8 +27,8 @@ const HeaderDesktop = () => {
 
         {/* Informações da conta/perfil e Carrinho de compras */}
         <div className="flex gap-3 justify-end">
-          <CircleUserIcon
-            className="hover:text-(--secondary-color) transition-colors"
+          <CircleUser
+            className="hover:text-(--secondary-color) transition-colors size-7"
             onClick={() => navigate("/profile")}
           />
           <CartIcon />
