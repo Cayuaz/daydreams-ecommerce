@@ -22,7 +22,7 @@ const SearchBar = ({ setOpen, className, inputTextColor }: SearchBarProps) => {
     <Form
       method="get"
       action="/products/page/1"
-      className={`flex gap-4 w-5/6 sm:w-full lg:w-4/6 mx-auto items-center ${className} py-2 px-2 rounded-lg relative`}
+      className={`flex gap-3 w-5/6 sm:w-full lg:w-4/6 mx-auto items-center ${className} py-2 px-2 rounded-lg relative`}
       onSubmit={() => setOpen!(false)}
     >
       {/* Ícone da lupa  */}
@@ -34,7 +34,7 @@ const SearchBar = ({ setOpen, className, inputTextColor }: SearchBarProps) => {
         name="q"
         placeholder="O que você está buscando?"
         value={input}
-        className={`outline-0 w-full text-left text-sm lg:text-base ${inputTextColor} `}
+        className={`outline-0 w-full text-left text-[0.8rem] lg:text-base ${inputTextColor} `}
         onChange={(e) => setInput(e.target.value)}
         required
         ref={inputRef}
