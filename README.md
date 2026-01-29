@@ -87,7 +87,7 @@ A estética e a experiência de usuário foram inspiradas em referências do cen
 
 ### Design
 
-- **Interface & UX** Figma
+- **Interface & UX:** Figma
 - **Assets Visuais**: Google Gemini (Geração de ícones de vestuário via IA)
 
 ## Funcionalidades
@@ -125,7 +125,7 @@ A estética e a experiência de usuário foram inspiradas em referências do cen
 - **React Router v6.4+ (Data APIs):** A escolha se deu pela robustez das Data APIs (`loaders` e `actions`). Essa abordagem permite iniciar o carregamento de dados em paralelo à renderização da rota, melhorando a performance percebida e simplificando o gerenciamento de estado assíncrono.
 - **Zustand:** Selecionado pela sua API minimalista e performance superior ao Context API nativo, evitando re-renderizações desnecessárias em estados globais voláteis como o carrinho de compras.
 - **ShadcnUI:** Escolhido por oferecer componentes acessíveis e totalmente customizáveis. Diferente de bibliotecas tradicionais, ele permite controle total do código-fonte e integração nativa com o TailwindCSS.
-- **Axios:** Selecionado em detrimento do Fetch API devido à sua flexibilidade na criação de instâncias globais e uso de interceptadores. Essa configuração permite a padronização da URL base e a criação de uma camada de resposta simplificada, retornando os dados diretamente (`res.data`) e reduzindo o boilerplate no consumo da API.
+- **Axios:** Selecionado em vez da Fetch API devido à sua flexibilidade na criação de instâncias globais e uso de interceptadores. Essa configuração permite a padronização da URL base e a criação de uma camada de resposta simplificada, retornando os dados diretamente (`res.data`) e reduzindo o boilerplate no consumo da API.
 
 ### Backend
 
