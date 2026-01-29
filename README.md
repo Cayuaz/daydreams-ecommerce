@@ -21,9 +21,11 @@
 ## Índice
 
 - [Sobre](#sobre)
-- [Galeria do Projeto](#-galeria-do-projeto)
+- [Preview](#preview)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Funcionalidades](#funcionalidades)
 - [Decisões Técnicas](#decisões-técnicas)
+- [Objetivos de Aprendizagem](#objetivos-de-aprendizagem)
 - [Arquitetura do Projeto](#arquitetura-do-projeto)
 - [Links do Projeto](#links-do-projeto)
 - [Como Executar](#como-executar)
@@ -43,7 +45,7 @@ O desenvolvimento seguiu um ciclo profissional completo (_end-to-end_): iniciou-
 
 A ideia central nasceu da vontade de unir duas paixões: a engenharia de software e a cultura do _Streetwear_.
 
-A estética e a experiência de usuário foram inspiradas em referências do cenário nacional — como _Mad Enlatados_, _Tá na base_, _Class_, _ALLGLORY_ e _EGHO STUDIOS_. O objetivo não foi apenas criar código, mas desenvolver um produto com identidade, utilizando esse contexto real para aplicar e consolidar conceitos complexos de programação na prática.
+A estética e a experiência de usuário foram inspiradas em referências do cenário nacional, como: _Mad Enlatados_, _Tá na base_, _Class_, _ALLGLORY_ e _EGHO STUDIOS_. O objetivo não foi apenas criar código, mas desenvolver um produto com identidade, utilizando esse contexto real para aplicar e consolidar conceitos complexos de programação na prática.
 
 ---
 
@@ -60,6 +62,33 @@ A estética e a experiência de usuário foram inspiradas em referências do cen
 ![Produto](./github/assets/daydreams-product.png)
 
 ---
+
+## Tecnologias Utilizadas
+
+### Frontend (Client)
+
+- **Core:** React & TypeScript
+- **Roteamento:** React Router v6.4+ (Data APIs: Loaders/Actions)
+- **Estilização:** TailwindCSS & Shadcn/UI
+- **Estado Global:** Zustand (com persistência em LocalStorage)
+- **Consumo de API:** Axios (Instâncias e Interceptadores)
+- **Animações & Ícones:** Framer Motion & Lucide React
+- **Validação:** Zod
+
+### Backend (API)
+
+- **Runtime & Linguagem:** Node.js & TypeScript (Paradigma POO)
+- **Framework:** Express
+- **Banco de Dados:** PostgreSQL (via Neon)
+- **ORM:** Prisma
+- **Segurança:** JWT (Autenticação), Bcrypt (Hash de senhas) e CORS
+- **Documentação:** Swagger (OpenAPI 3.0)
+- **Infraestrutura:** Docker (Conteinerização) & Dotenv
+
+### Design
+
+- **Interface & UX** Figma
+- **Assets Visuais**: Google Gemini (Geração de ícones de vestuário via IA)
 
 ## Funcionalidades
 
@@ -86,27 +115,37 @@ A estética e a experiência de usuário foram inspiradas em referências do cen
 
 ## Decisões Técnicas
 
-A escolha de cada tecnologia neste projeto foi pautada em resolver problemas específicos de performance, escalabilidade e design:
-
-## Decisões Técnicas
-
 ### Design & UI
 
 - **Figma (Prototipagem):** Antes de escrever qualquer linha de código, todo o layout, fluxo de usuário e hierarquia visual foram desenhados no Figma. Isso garantiu um Design System consistente (cores, tipografia, espaçamentos) e agilizou a implementação com TailwindCSS.
+- **Inteligência Artificial (Google Gemini):** Todos os ícones de vestuário foram gerados via IA, garantindo uma estética padronizada e personalizada. Essa abordagem permitiu elevar o nível visual do projeto, aproximando-o de padrões de e-commerces profissionais.
 
 ### Frontend
 
-- **React Router v6.4+ (Data APIs):** A escolha se deu pela robustez das novas Data APIs (`loaders` e `actions`). Essa abordagem permite iniciar o carregamento de dados em paralelo à renderização da rota, melhorando a performance percebida e simplificando o gerenciamento de estado assíncrono.
+- **React Router v6.4+ (Data APIs):** A escolha se deu pela robustez das Data APIs (`loaders` e `actions`). Essa abordagem permite iniciar o carregamento de dados em paralelo à renderização da rota, melhorando a performance percebida e simplificando o gerenciamento de estado assíncrono.
 - **Zustand:** Selecionado pela sua API minimalista e performance superior ao Context API nativo, evitando re-renderizações desnecessárias em estados globais voláteis como o carrinho de compras.
 - **ShadcnUI:** Escolhido por oferecer componentes acessíveis e totalmente customizáveis. Diferente de bibliotecas tradicionais, ele permite controle total do código-fonte e integração nativa com o TailwindCSS.
+- **Axios:** Selecionado em detrimento do Fetch API devido à sua flexibilidade na criação de instâncias globais e uso de interceptadores. Essa configuração permite a padronização da URL base e a criação de uma camada de resposta simplificada, retornando os dados diretamente (`res.data`) e reduzindo o boilerplate no consumo da API.
 
 ### Backend
 
+- **Programação Orientada a Objetos (POO):** O sistema foi desenvolvido utilizando o paradigma de POO para garantir que a lógica de negócio seja modular e reutilizável. Através do uso de classes, métodos privados e tipos rigorosos, foi possível implementar padrões como Injeção de Dependência, facilitando a manutenção e a escalabilidade do código.
 - **Clean Architecture (Adaptada):** A estrutura desacopla as regras de negócio do framework web (Express). Isso aumenta a testabilidade e a manutenção, isolando a lógica "pura" (Use Cases) de detalhes de infraestrutura.
 - **Prisma ORM:** Utilizado para garantir Type Safety (segurança de tipos) entre a aplicação e o banco de dados, prevenindo erros de SQL em tempo de desenvolvimento e facilitando migrações.
 - **PostgreSQL (Neon):** Escolhido pela robustez do ecossistema Postgres aliada a uma infraestrutura moderna em nuvem. O Neon oferece uma implementação gerenciada de alta performance, garantindo a integridade dos dados e eliminando a complexidade de manutenção de servidores físicos.
 
 ---
+
+## Objetivos de Aprendizagem
+
+Este projeto foi um marco importante na minha evolução como desenvolvedor, permitindo a consolidação de conceitos avançados e a aplicação prática de uma stack moderna. Os principais focos de aprendizado foram:
+
+- **Arquitetura & POO:** Este foi o meu primeiro contato prático com Programação Orientada a Objetos aplicada a um projeto real. Combinar POO com **Clean Architecture** foi fundamental para entender como criar sistemas desacoplados, escaláveis e de fácil manutenção.
+- **Gestão de Estado Global:** Com o **Zustand**, compreendi a importância de estados globais centralizados em aplicações complexas. A experiência destacou como uma biblioteca minimalista pode oferecer alta performance e uma excelente experiência de desenvolvimento.
+- **Estilização & Design System:** O uso do **Tailwind CSS** provou sua eficiência na velocidade de desenvolvimento e na facilidade de implementar o conceito de _Mobile First_. A integração com **ShadcnUI** permitiu construir uma interface consistente e acessível utilizando componentes prontos de alta qualidade.
+- **Segurança de Tipos com Zod:** O uso do **Zod** representou uma "virada de chave". Substituir _Type Guards_ manuais por validação baseada em schemas garantiu que os tipos fossem verificados em tempo de execução, aumentando drasticamente a confiabilidade dos dados entre o Front e o Back.
+- **Documentação Interativa:** Com o **Swagger**, consolidei a importância de manter uma documentação profissional. Diferente de coleções estáticas, o Swagger oferece uma interface interativa que facilita o consumo da API por outros desenvolvedores.
+- **Conteinerização com Docker:** Aprendi os fundamentos de imagens e contêineres, garantindo que a aplicação seja padronizada e capaz de rodar sem conflitos em qualquer ambiente de execução.
 
 ## Arquitetura do Projeto
 
