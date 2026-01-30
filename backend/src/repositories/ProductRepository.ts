@@ -31,6 +31,11 @@ export class ProductRepository implements IProductRepository {
         OR: keywords.map((keyword) => ({
           name: { contains: keyword, mode: "insensitive" },
         })),
+        //O array das palavras-chave de casacos tem moletom, o que traz também calças na busca de casacos, por isso caso a query seja casacos os produtos não podem conter "Calça" no nome
+        NOT:
+          normalizeQuery === "casacos"
+            ? { name: { contains: "Calça", mode: "insensitive" } }
+            : {},
       },
       //Se pageNumber for 3, 3 - 1 = 2, 2 * 10 = 20, ou seja se cada página mostra 10 itens, na 3 ele pula os últimos 20 itens
       skip: (currentPage - 1) * pageSize,
